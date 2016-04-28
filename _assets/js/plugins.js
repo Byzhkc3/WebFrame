@@ -24,12 +24,16 @@
 
 (function () {
     Modernizr.load([{
-        both: [
-            '_assets/js/public/jquery/jquery-1.12.0.min.js'
-            ,''
-        ],
+        load: {
+            'jquery':'https://cdn.jsdelivr.net/jquery/1.12.3/jquery.min.js'//jquery
+            ,'lodash':'https://cdn.jsdelivr.net/lodash/4.11.2/lodash.min.js'//基础库
+            ,'html5media':'_assets/js/public/html5media/html5media-1.1.8.min.js'//多媒体
+            ,'moment':'https://cdn.jsdelivr.net/g/momentjs@2.13.0(moment.min.js+locales.min.js)'//日期
+            ,'validator':'https://cdn.jsdelivr.net/validator/5.2.0/validator.min.js'//验证
+        },
         complete: function () {
-            alert($("#aaaa").html());
+            moment.locale('zh-cn');
+            $("#aaaa").html(moment().add(7,'y').format('LLLL'));
         }
     }]);
 }());
