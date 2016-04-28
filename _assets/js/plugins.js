@@ -21,3 +21,15 @@
         }
     }
 }());
+
+(function () {
+    Modernizr.load([{
+        both: [
+            '_assets/js/public/jquery/jquery-1.12.0.min.js'
+            ,''
+        ],
+        complete: function () {
+            alert($("#aaaa").html());
+        }
+    }]);
+}());
