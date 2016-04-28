@@ -24,12 +24,17 @@
 
 (function () {
     Modernizr.load([{
-        both: [
+        load: [
             '_assets/js/public/jquery/jquery-1.12.0.min.js'
             ,''
         ],
-        complete: function () {
+        callback : function ( url, result, key ) {
+            // whenever this runs, your script has just executed.
             alert($("#aaaa").html());
+        },
+
+        complete: function () {
+            
         }
     }]);
 }());
