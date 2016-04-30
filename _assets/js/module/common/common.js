@@ -172,8 +172,8 @@
             money = parseFloat((money + "").replace(/[^\d\.-]/g, "")).toFixed(n) + "";
             var l = money.split(".")[0].split("").reverse(),
                 r = money.split(".")[1];
-            t = "";
-            for (i = 0; i < l.length; i++) {
+            var t = "";
+            for (var i = 0; i < l.length; i++) {
                 t += l[i] + ((i + 1) % 3 == 0 && (i + 1) != l.length ? "," : "");
             }
             return t.split("").reverse().join("") + "." + r;
@@ -193,7 +193,8 @@
                 /* 对照格式 */
                 if (bankAccount.match(".[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{7}|" + ".[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{7}|" +
                         ".[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{7}|" + ".[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{7}") == null) {
-                    var accountNumeric = accountChar = "", i;
+                    var accountNumeric = "", i;
+                    var accountChar = "";
                     for (i = 0; i < bankAccount.length; i++) {
                         accountChar = bankAccount.substr(i, 1);
                         if (!isNaN(accountChar) && (accountChar != " ")) accountNumeric = accountNumeric + accountChar;
