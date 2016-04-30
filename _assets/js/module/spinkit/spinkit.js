@@ -17,9 +17,13 @@
 }(function (require, exports, module) {
     var SpinKit = typeof exports !== 'undefined' ? exports : {};
 
-    exports.version="1.0.0";
+    exports.version = "1.0.0";
 
-    var scriptRoot = (function() {
+    function dirname(path) {
+        return path.split("/").slice(0, -1).join("/") + "/";
+    }
+    
+    var scriptRoot = (function () {
         var scripts = document.getElementsByTagName("script");
         for (var n = 0; n < scripts.length; n++) {
             var script = scripts[n];
@@ -30,12 +34,15 @@
         return "";
     }());
 
-    var html='<div class="spinner"></div>';
+    var spinnerArr=[];
 
-
+    var html = '<div class="spinner_container">'
+        + '<div class="spinner"></div>'
+        + '<div class="spinner_bg"></div>'
+        + '</div>';
 
     function include(file) {
-        var files = typeof file == "string" ? [file]:file;
+        var files = typeof file == "string" ? [file] : file;
         for (var i = 0; i < files.length; i++) {
             var name = files[i].replace(/^\s|\s$/g, "");
             var att = name.split('.');
@@ -48,18 +55,20 @@
         }
     }
 
-    var _default={
-        container:$("body")
+    var _default = {
+        spin: ""
 
 
     };
 
 
-
-    exports.show=function (configs) {
-        var _container=configs.container?configs.container:_default.container;
+    exports.show = function (obj, configs) {
+        var _container = obj ? obj : $('body');
         _container.append(html);
 
+    }
+    exports.hidden = function (obj) {
+        obj.find(".spinner").remove();
     }
 
 

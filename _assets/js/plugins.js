@@ -30,10 +30,12 @@
             ,'html5media':'_assets/js/public/html5media/html5media-1.1.8.min.js'//多媒体
             ,'moment':'https://cdn.jsdelivr.net/g/momentjs@2.13.0(moment.min.js+locales.min.js)'//日期
             ,'validator':'https://cdn.jsdelivr.net/validator/5.2.0/validator.min.js'//验证
+            ,'spink':'_assets/js/module/spinkit/spinkit.js'//加载动画
         },
         complete: function () {
-            moment.locale('zh-cn');
+            //moment.locale('zh-cn');
             $("#aaaa").html(moment().add(7,'y').format('LLLL'));
+            SpinKit.show();
         }
     }]);
 }());
