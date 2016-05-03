@@ -310,15 +310,42 @@
          */
         resolveObjectURL: function (blob) {
             window[window.webkitURL ? 'webkitURL' : 'URL']['revokeObjectURL'](blob);
+        },
+        /*
+        * 根据key,value获取对象obj:[{key1,values},{key2,values}]的值
+        * @obj:对象
+        * @key:键
+        * @value:值
+        * @return:{index,item}
+        * */
+        getArrJsonItem: function (obj, key, value) {
+            var k = (typeof (key) == "string" && key != "") ? key : null;
+            var v = (typeof (value) != "undefined") ? value : null;
+            if (typeof (obj) == "object" && obj != null && k != null) {
+                for (var item in obj) {
+                    if (v != null) {
+                        if (obj[item][k] === v || obj[item][k].is(v)) {
+                            return {index: item, item: obj[item]};
+                            break;
+                        }
+                    }
+                    else {
+                        if (obj[item].hasOwnProperty(k)) {
+                            return {index: item, item: obj[item]};
+                            break;
+                        }
+                    }
+                }
+            }
+            return {index: -1, item: null};
         }
-        
 
 
     }
 
     //转化
-    exports.transform={
-         rgb2Hex: function (rgb) {
+    exports.transform = {
+        rgb2Hex: function (rgb) {
             var reg = /^#([0-9a-fA-f]{3}|[0-9a-fA-f]{6})$/;
             var that = rgb;
             if (/^(rgb|RGB)/.test(that)) {
@@ -372,7 +399,7 @@
             }
         },
     }
-    
+
     //is判断
     exports.is = {
         /*

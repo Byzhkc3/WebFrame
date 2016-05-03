@@ -32,6 +32,9 @@
             ,'validator':'https://cdn.jsdelivr.net/validator/5.2.0/validator.min.js'//验证
             ,'spink':'_assets/js/module/spinkit/spinkit.js'//加载动画
         },
+        callback:function (url, result, key) {
+            //alert(url);
+        },
         complete: function () {
             //moment.locale('zh-cn');
             $("#aaaa").html(moment().add(7,'y').format('LLLL'));
