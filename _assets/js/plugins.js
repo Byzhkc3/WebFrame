@@ -35,7 +35,9 @@
         complete: function () {
             //moment.locale('zh-cn');
             $("#aaaa").html(moment().add(7,'y').format('LLLL'));
-            SpinKit.show();
+            SpinKit.show(null,{
+                "background":"rgba(188,188,10,.8)"
+            });
         }
     }]);
 }());

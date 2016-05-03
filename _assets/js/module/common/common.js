@@ -221,7 +221,158 @@
     }
 
     //通用function
-    exports.fn = {}
+    exports.fn = {
+        /*
+         * 获取 js 脚本文件地址
+         * @scriptName:js 文件名
+         * */
+        getScriptRoot: function (scriptName) {
+            var scripts = document.getElementsByTagName("script");
+            for (var n = 0; n < scripts.length; n++) {
+                var script = scripts[n];
+                if (script.src.match(eval("/" + scriptName + "(\.min|)\.js/"))) {
+                    return (script.src).split("/").slice(0, -1).join("/") + "/";
+                }
+            }
+            return "";
+        },
+        /*
+         * 获取页面做大的 z-index
+         * @max:设置最大值
+         * */
+        getmaxZindex: function (max) {
+            max = max > 0 ? max + 1 : 0;
+            var maxZ = Math.max.apply(null, $.map($('body > *'), function (e, n) {
+                if ($(e).css('position') == 'absolute' || $(e).css('position') == 'fixed')
+                    return parseInt($(e).css('z-index')) || 1;
+            }));
+            maxZ = maxZ == -Infinity ? 1 : maxZ;
+            maxZ = maxZ < max ? maxZ : max;
+            return maxZ;
+        },
+        /*
+         *获取localStorage值
+         */
+        getstorage: function (key) {
+            var storage = window.localStorage;
+            if (storage) {
+                return storage.getItem(key) == "undefined" ? null : storage.getItem(key);
+            }
+            return null;
+        },
+        /**
+         * 写入localStorage值
+         * @returns bool
+         */
+        writestorage: function (key, value) {
+            var storage = window.localStorage;
+            if (storage) {
+                storage.setItem(key, value);
+                return true;
+            }
+            return false;
+        },
+        /**
+         * 删除localStorage值
+         * @returns bool
+         */
+        delstorage: function (key) {
+            var storage = window.localStorage;
+            if (storage) {
+                storage.removeItem(key);
+                return true;
+            }
+            return false;
+        },
+        /**
+         * 清除localStorage值
+         * @returns bool
+         */
+        clearstorage: function () {
+            var storage = window.localStorage;
+            if (storage) {
+                storage.clear();
+                return true;
+            }
+            return false;
+        },
+
+        /*
+         生成数据链接
+         */
+        createObjectURL: function (blob) {
+            return window[window.webkitURL ? 'webkitURL' : 'URL']['createObjectURL'](blob);
+            this.resolveObjectURL(blob);
+        },
+
+        /*
+         释放数据链接独占的内存
+         */
+        resolveObjectURL: function (blob) {
+            window[window.webkitURL ? 'webkitURL' : 'URL']['revokeObjectURL'](blob);
+        }
+        
+
+
+    }
+
+    //转化
+    exports.transform={
+         rgb2Hex: function (rgb) {
+            var reg = /^#([0-9a-fA-f]{3}|[0-9a-fA-f]{6})$/;
+            var that = rgb;
+            if (/^(rgb|RGB)/.test(that)) {
+                var aColor = that.replace(/(?:\(|\)|rgb|RGB)*/g, "").split(",");
+                var strHex = "#";
+                for (var i = 0; i < aColor.length; i++) {
+                    var hex = Number(aColor[i]).toString(16);
+                    if (hex === "0") {
+                        hex += hex;
+                    }
+                    strHex += hex;
+                }
+                if (strHex.length !== 7) {
+                    strHex = that;
+                }
+                return strHex;
+            } else if (reg.test(that)) {
+                var aNum = that.replace(/#/, "").split("");
+                if (aNum.length === 6) {
+                    return that;
+                } else if (aNum.length === 3) {
+                    var numHex = "#";
+                    for (var i = 0; i < aNum.length; i += 1) {
+                        numHex += (aNum[i] + aNum[i]);
+                    }
+                    return numHex;
+                }
+            } else {
+                return that;
+            }
+        },
+        hex2Rgb: function (hex) {
+            var reg = /^#([0-9a-fA-f]{3}|[0-9a-fA-f]{6})$/;
+            var sColor = this.toLowerCase();
+            if (sColor && reg.test(sColor)) {
+                if (sColor.length === 4) {
+                    var sColorNew = "#";
+                    for (var i = 1; i < 4; i += 1) {
+                        sColorNew += sColor.slice(i, i + 1).concat(sColor.slice(i, i + 1));
+                    }
+                    sColor = sColorNew;
+                }
+                //处理六位的颜色值
+                var sColorChange = [];
+                for (var i = 1; i < 7; i += 2) {
+                    sColorChange.push(parseInt("0x" + sColor.slice(i, i + 2)));
+                }
+                return "RGB(" + sColorChange.join(",") + ")";
+            } else {
+                return sColor;
+            }
+        },
+    }
+    
     //is判断
     exports.is = {
         /*
