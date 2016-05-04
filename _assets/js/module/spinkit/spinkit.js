@@ -89,7 +89,7 @@
 
 
     var _default = {
-        spin: "bounce"
+        spin: "three-bounce"
         , width: 40
         , height: 40
         , position: "center"
@@ -186,8 +186,11 @@
             : configs.spin === "square" ? getArrJsonItem(spinObj, "square").item
             : configs.spin === "bounce" ? getArrJsonItem(spinObj, "bounce").item
             : configs.spin === "double-bounce" ? getArrJsonItem(spinObj, "double-bounce").item
+            : configs.spin === "three-bounce" ? getArrJsonItem(spinObj, "three-bounce").item
             : configs.spin === "cube" ? getArrJsonItem(spinObj, "cube").item
-
+            : configs.spin === "dot" ? getArrJsonItem(spinObj, "dot").item
+            : configs.spin === "grid" ? getArrJsonItem(spinObj, "grid").item
+            : configs.spin === "folding" ? getArrJsonItem(spinObj, "folding").item
             : getArrJsonItem(spinObj, _default.spin).item;
 
         _container.append($(_html).attr("id", _id));
@@ -225,6 +228,7 @@
             , "position": "relative"
             , "display": "inline-block"
             , "overflow": "hidden"
+            ,"text-align": "center"
         });
 
         resize(_container);
@@ -289,6 +293,45 @@
             }
         },
         {
+            "grid": {
+                "html": ''
+                + '<div class="sk-cube-grid">'
+                + '  <div class="sk-cube sk-cube1"></div>'
+                + '  <div class="sk-cube sk-cube2"></div>'
+                + '  <div class="sk-cube sk-cube3"></div>'
+                + '  <div class="sk-cube sk-cube4"></div>'
+                + '  <div class="sk-cube sk-cube5"></div>'
+                + '  <div class="sk-cube sk-cube6"></div>'
+                + '  <div class="sk-cube sk-cube7"></div>'
+                + '  <div class="sk-cube sk-cube8"></div>'
+                + '  <div class="sk-cube sk-cube9"></div>'
+                + '</div>'
+                + '<style>'
+                + '   #{SpinnerObjIDValue} .sk-cube-grid .sk-cube {'
+                + '        {SpinnerObjColorValue}'
+                + '    }'
+                + '</style>'
+                , "css": "grid.css"
+            }
+        },
+        {
+            "folding": {
+                "html": ''
+                + '<div class="sk-folding-cube">'
+                + '  <div class="sk-cube1 sk-cube"></div>'
+                + '  <div class="sk-cube2 sk-cube"></div>'
+                + '  <div class="sk-cube4 sk-cube"></div>'
+                + '  <div class="sk-cube4 sk-cube"></div>'
+                + '</div>'
+                + '<style>'
+                + '   #{SpinnerObjIDValue} .sk-folding-cube .sk-cube:before {'
+                + '        {SpinnerObjColorValue}'
+                + '    }'
+                + '</style>'
+                , "css": "folding.css"
+            }
+        },
+        {
             "square": {
                 "html": ''
                 + '<style>'
@@ -333,6 +376,41 @@
                 + '    }'
                 + '</style>'
                 , "css": "double-bounce.css"
+            }
+        },
+        {
+            "three-bounce": {
+                "html": ''
+                + '<div class="bounce1"></div>'
+                + '<div class="bounce2"></div>'
+                + '<div class="bounce3"></div>'
+                + '<style>'
+                + '   #{SpinnerObjIDValue} .spinner {'
+                + '        margin:auto;'
+                + '    }'
+                + '   #{SpinnerObjIDValue} .spinner > div {'
+                + '        {SpinnerObjColorValue}'
+                + '    }'
+                + '</style>'
+                , "css": "three-bounce.css"
+            }
+        },
+        {
+            "dot": {
+                "html": ''
+                + '<div class="dot1"></div>'
+                + '<div class="dot2"></div>'
+                + '<style>'
+                + '   #{SpinnerObjIDValue} .spinner {'
+                + '        margin:auto;'
+                + '        -webkit-animation: sk-rotate 2.0s infinite linear;'
+                + '        animation: sk-rotate 2.0s infinite linear;'
+                + '    }'
+                + '   #{SpinnerObjIDValue} .dot1,#{SpinnerObjIDValue} .dot2 {'
+                + '        {SpinnerObjColorValue}'
+                + '    }'
+                + '</style>'
+                , "css": "dot.css"
             }
         },
         {

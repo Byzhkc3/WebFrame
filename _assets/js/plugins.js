@@ -41,9 +41,9 @@
 
             SpinKit.show($("#bbbb"),{
                 "background":"rgba(188,188,10,.1)"
-                ,width:80
-                ,height:80
-                ,spin:"double-bounce"
+                ,width:100
+                ,height:100
+
             });
             SpinKit.show($("#cccc"),{
                 "position":{
