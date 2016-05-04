@@ -228,7 +228,7 @@
             , "position": "relative"
             , "display": "inline-block"
             , "overflow": "hidden"
-            ,"text-align": "center"
+            , "text-align": "center"
         });
 
         resize(_container);
