@@ -38,9 +38,26 @@
         complete: function () {
             //moment.locale('zh-cn');
             $("#aaaa").html(moment().add(7,'y').format('LLLL'));
-            SpinKit.show(null,{
-                "background":"rgba(188,188,10,.8)"
+
+            SpinKit.show($("#bbbb"),{
+                "background":"rgba(188,188,10,.1)"
+                ,width:80
+                ,height:80
+                ,spin:"double-bounce"
             });
+            SpinKit.show($("#cccc"),{
+                "position":{
+                    top:50
+                    ,left:80
+                }
+                ,color:"#202D90"
+
+            });
+
+            // setTimeout(function () {
+            //     SpinKit.hidden($("#cccc"));
+            // },2000);
+
         }
     }]);
 }());

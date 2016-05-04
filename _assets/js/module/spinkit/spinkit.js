@@ -42,7 +42,9 @@
             var tag = isCSS ? "link" : "script";
             var attr = isCSS ? " type='text/css' rel='stylesheet' " : " language='javascript' type='text/javascript' ";
             var link = (isCSS ? "href" : "src") + "='" + scriptRoot + name + "'";
-            if ($(tag + "[" + link + "]").length == 0) document.write("<" + tag + attr + link + "></" + tag + ">");
+            if ($(tag + "[" + link + "]").length == 0) {
+                $("head").append("<" + tag + attr + link + "></" + tag + ">");
+            }
         }
     }
 
@@ -81,45 +83,64 @@
 
     var spinnerArr = [];
 
-    var html = '<div class="spinner_container">'
+    var _html = '<div class="spinner_container">'
         + '    <div class="spinner"></div>'
         + '</div>';
 
 
     var _default = {
-        spin: "circle"
+        spin: "bounce"
         , width: 40
         , height: 40
-        , position: "top"
-        , background: "rgba(0,0,0,0.4)"
-
-
+        , position: "center"
+        , background: "rgba(0,0,0,.1)"
+        , color: "#ff0000"
     };
 
 
     function resize(obj) {
         var thisSpinnerObj = getArrJsonItem(spinnerArr, "obj", obj).item;
+        var _id = thisSpinnerObj.id;
         if (thisSpinnerObj != null) {
             thisSpinnerObj = thisSpinnerObj.configs;
-            obj.find(".spinner_container").css({
-                "width": obj.is($('body')) ? $(window).width() : obj.outerWidth() + "px"
-                , "height": obj.is($('body')) ? $(window).height() : obj.outerHeight() + "px"
-                , "top": obj.offset().top + "px"
-                , "left": obj.offset().left + "px"
+
+            obj.find("#" + _id).css({
+                "width": obj.is($('body')) ? ($(window).width() > obj.outerWidth() ? $(window).width() : obj.outerWidth()) : obj.outerWidth() + "px"
+                ,
+                "height": obj.is($('body')) ? ($(window).height() > obj.outerHeight() ? $(window).height() : obj.outerHeight()) : obj.outerHeight() + "px"
+                ,
+                "top": obj.offset().top + "px"
+                ,
+                "left": obj.offset().left + "px"
             });
 
-            var _top = thisSpinnerObj.position == "top" ? 0
-                : thisSpinnerObj.position == "top" ? 0
-                : 0;
+            var _top = (typeof (thisSpinnerObj.position) == "string" && (thisSpinnerObj.position).toLowerCase() == "top") ? 0
+                : (typeof (thisSpinnerObj.position) == "string" && (thisSpinnerObj.position).toLowerCase() == "center") ? (obj.find("#" + _id).height() - thisSpinnerObj.height) / 2
+                : (typeof (thisSpinnerObj.position) == "string" && (thisSpinnerObj.position).toLowerCase() == "bottom") ? (obj.find("#" + _id).height() - thisSpinnerObj.height)
+                : (typeof (thisSpinnerObj.position) == "string" && (thisSpinnerObj.position).toLowerCase() == "topleft") ? 0
+                : (typeof (thisSpinnerObj.position) == "string" && (thisSpinnerObj.position).toLowerCase() == "centerleft") ? (obj.find("#" + _id).height() - thisSpinnerObj.height) / 2
+                : (typeof (thisSpinnerObj.position) == "string" && (thisSpinnerObj.position).toLowerCase() == "bottomleft") ? (obj.find("#" + _id).height() - thisSpinnerObj.height)
+                : (typeof (thisSpinnerObj.position) == "string" && (thisSpinnerObj.position).toLowerCase() == "topright") ? 0
+                : (typeof (thisSpinnerObj.position) == "string" && (thisSpinnerObj.position).toLowerCase() == "centerright") ? (obj.find("#" + _id).height() - thisSpinnerObj.height) / 2
+                : (typeof (thisSpinnerObj.position) == "string" && (thisSpinnerObj.position).toLowerCase() == "bottomright") ? (obj.find("#" + _id).height() - thisSpinnerObj.height)
+                : (typeof (thisSpinnerObj.position) == "object" && thisSpinnerObj.position != null) ? (thisSpinnerObj.position.top > 0 ? thisSpinnerObj.position.top : 0)
+                : (obj.find("#" + _id).height() - thisSpinnerObj.height) / 2;
 
-            var _left = thisSpinnerObj.position == "top" ? (obj.find(".spinner_container").width() - thisSpinnerObj.width) / 2
-                : thisSpinnerObj.position == "top" ? (obj.find(".spinner_container").width() - thisSpinnerObj.width) / 2
-                : 0;
+            var _left = (typeof (thisSpinnerObj.position) == "string" && (thisSpinnerObj.position).toLowerCase() == "top") ? (obj.find("#" + _id).width() - thisSpinnerObj.width) / 2
+                : (typeof (thisSpinnerObj.position) == "string" && (thisSpinnerObj.position).toLowerCase() == "center") ? (obj.find("#" + _id).width() - thisSpinnerObj.width) / 2
+                : (typeof (thisSpinnerObj.position) == "string" && (thisSpinnerObj.position).toLowerCase() == "bottom") ? (obj.find("#" + _id).width() - thisSpinnerObj.width) / 2
+                : (typeof (thisSpinnerObj.position) == "string" && (thisSpinnerObj.position).toLowerCase() == "topleft") ? 0
+                : (typeof (thisSpinnerObj.position) == "string" && (thisSpinnerObj.position).toLowerCase() == "centerleft") ? 0
+                : (typeof (thisSpinnerObj.position) == "string" && (thisSpinnerObj.position).toLowerCase() == "bottomleft") ? 0
+                : (typeof (thisSpinnerObj.position) == "string" && (thisSpinnerObj.position).toLowerCase() == "topright") ? (obj.find("#" + _id).width() - thisSpinnerObj.width)
+                : (typeof (thisSpinnerObj.position) == "string" && (thisSpinnerObj.position).toLowerCase() == "centerright") ? (obj.find("#" + _id).width() - thisSpinnerObj.width)
+                : (typeof (thisSpinnerObj.position) == "string" && (thisSpinnerObj.position).toLowerCase() == "bottomright") ? (obj.find("#" + _id).width() - thisSpinnerObj.width)
+                : (typeof (thisSpinnerObj.position) == "object" && thisSpinnerObj.position != null) ? (thisSpinnerObj.position.left > 0 ? thisSpinnerObj.position.left : 0)
+                : (obj.find("#" + _id).width() - thisSpinnerObj.width) / 2;
 
-            obj.find(".spinner_container .spinner").css({
+            obj.find("#" + _id + " .spinner").css({
                 "top": _top + "px"
                 , "left": _left + "px"
-
             });
         }
 
@@ -129,22 +150,28 @@
 
         var _container = obj ? obj : $('body');
 
-        var hasSpinner = getArrJsonItem(spinnerArr, "obj", _container).index;
-        if (hasSpinner != -1) {
-            _container.remove(".spinner_container");
-            spinnerArr.splice(hasSpinner);
+        var hasSpinnerObj = getArrJsonItem(spinnerArr, "obj", _container);
+        var hasSpinnerIndex = hasSpinnerObj.index;
+
+        if (hasSpinnerIndex != -1) {
+            var hasSpinnerObjID = hasSpinnerObj.item.id;
+            _container.remove("#" + hasSpinnerObjID);
+            spinnerArr.splice(hasSpinnerIndex);
         }
 
         configs = (typeof (configs) == "object" && configs != null) ? configs : _default;
 
+        var _id = "spinner" + Math.floor(Math.random() * 100000 + 1);
         var _spin = (typeof (configs.spin) != "undefined" && configs.spin != "") ? configs.spin : _default.spin;
         var _width = configs.width > 0 ? configs.width : _default.width;
         var _height = configs.height > 0 ? configs.height : _default.height;
         var _position = (typeof (configs.position) != "undefined" && configs.position != "") ? configs.position : _default.position;
-        var _background = configs.background.indexOf("rgba(") != -1 ? configs.background : _default.background;
+        var _background = (typeof (configs.background) != "undefined" && configs.background.indexOf("rgba(") != -1) ? configs.background : _default.background;
+        var _color = (typeof (configs.color) != "undefined" && configs.color.indexOf("#") != -1) ? configs.color : _default.color;
 
         spinnerArr.push({
             "obj": _container
+            , "id": _id
             , "configs": {
                 spin: _spin
                 , width: _width
@@ -156,42 +183,58 @@
 
         var _spinObj = configs.spin === "circle" ? getArrJsonItem(spinObj, "circle").item
             : configs.spin === "fading-circle" ? getArrJsonItem(spinObj, "fading-circle").item
+            : configs.spin === "square" ? getArrJsonItem(spinObj, "square").item
+            : configs.spin === "bounce" ? getArrJsonItem(spinObj, "bounce").item
+            : configs.spin === "double-bounce" ? getArrJsonItem(spinObj, "double-bounce").item
+            : configs.spin === "cube" ? getArrJsonItem(spinObj, "cube").item
+
             : getArrJsonItem(spinObj, _default.spin).item;
 
-        _container.append(html);
+        _container.append($(_html).attr("id", _id));
 
-        _container.find(".spinner_container").css({
+        _container.find("#" + _id).css({
             "position": "absolute"
             , "z-index": getmaxZindex() + 10
+            , "display": "inline-block"
             , "background": _background
         });
 
-        _container.find(".spinner_container .spinner").css({
+        _container.find("#" + _id + " .spinner").css({
             "width": _width + "px"
             , "height": _height + "px"
             , "position": "relative"
-            , "background-color": "#ff0000"
+            , "display": "inline-block"
+            , "overflow": "hidden"
         });
 
+        var thisSpinObj = getArrJsonItem(_spinObj, "html").item;
+
+        var _cssFile = thisSpinObj.css;
+        if (_cssFile != "") {
+            include("css/" + _cssFile);
+        }
+
+        var _spinnerHtml = thisSpinObj.html;
+        _spinnerHtml = _spinnerHtml.replace(/{SpinnerObjIDValue}/g, _id);
+        _spinnerHtml = _spinnerHtml.replace(/{SpinnerObjColorValue}/g, 'background-color: ' + _color + ';');
+        _container.find("#" + _id + " .spinner").html(_spinnerHtml);
+
+        _container.find("#" + _id + " .spinner").css({
+            "width": _width + "px"
+            , "height": _height + "px"
+            , "position": "relative"
+            , "display": "inline-block"
+            , "overflow": "hidden"
+        });
 
         resize(_container);
 
         $(window).on("resize", function () {
-            $.each($.find(".spinner_container"), function () {
-                resize($(this).parent());
+            $.each(spinnerArr, function (index, item) {
+                resize(item.obj);
             });
         });
 
-    }
-
-
-    exports.show = function (obj, configs) {
-        creatSpin(obj, configs);
-
-
-    }
-    exports.hidden = function (obj) {
-        obj.find(".spinner").remove();
     }
 
     var spinObj = [
@@ -212,6 +255,11 @@
                 + '  <div class="sk-circle11 sk-child"></div>'
                 + '  <div class="sk-circle12 sk-child"></div>'
                 + '</div>'
+                + '<style>'
+                + '   #{SpinnerObjIDValue} .sk-circle .sk-child:before {'
+                + '        {SpinnerObjColorValue}'
+                + '    }'
+                + '</style>'
                 , "css": "circle.css"
             }
         },
@@ -232,10 +280,98 @@
                 + '  <div class="sk-circle11 sk-circle"></div>'
                 + '  <div class="sk-circle12 sk-circle"></div>'
                 + '</div>'
+                + '<style>'
+                + '   #{SpinnerObjIDValue} .sk-fading-circle .sk-circle:before {'
+                + '        {SpinnerObjColorValue}'
+                + '    }'
+                + '</style>'
                 , "css": "fading-circle.css"
             }
         },
+        {
+            "square": {
+                "html": ''
+                + '<style>'
+                + '   #{SpinnerObjIDValue} .spinner {'
+                + '        {SpinnerObjColorValue}'
+                + '        margin:auto;'
+                + '        -webkit-animation: sk-rotateplane 1.2s infinite ease-in-out;'
+                + '        animation: sk-rotateplane 1.2s infinite ease-in-out;'
+                + '    }'
+                + '</style>'
+                , "css": "square.css"
+            }
+        },
+        {
+            "bounce": {
+                "html": ''
+                + '<div class="double-bounce1"></div>'
+                + '<div class="double-bounce2"></div>'
+                + '<style>'
+                + '   #{SpinnerObjIDValue} .spinner {'
+                + '        margin:auto;'
+                + '        {SpinnerObjColorValue}'
+                + '        border-radius: 100%;'
+                + '        -webkit-animation: sk-scaleout 1.0s infinite ease-in-out;'
+                + '        animation: sk-scaleout 1.0s infinite ease-in-out;'
+                + '    }'
+                + '</style>'
+                , "css": "bounce.css"
+            }
+        },
+        {
+            "double-bounce": {
+                "html": ''
+                + '<div class="double-bounce1"></div>'
+                + '<div class="double-bounce2"></div>'
+                + '<style>'
+                + '   #{SpinnerObjIDValue} .spinner {'
+                + '        margin:auto;'
+                + '    }'
+                + '   #{SpinnerObjIDValue} .double-bounce1,#{SpinnerObjIDValue} .double-bounce2 {'
+                + '        {SpinnerObjColorValue}'
+                + '    }'
+                + '</style>'
+                , "css": "double-bounce.css"
+            }
+        },
+        {
+            "cube": {
+                "html": ''
+                + '<div class="cube1"></div>'
+                + '<div class="cube2"></div>'
+                + '<style>'
+                + '   #{SpinnerObjIDValue} .spinner {'
+                + '        margin:auto;'
+                + '    }'
+                + '   #{SpinnerObjIDValue} .cube1,#{SpinnerObjIDValue} .cube2 {'
+                + '        {SpinnerObjColorValue}'
+                + '    }'
+                + '</style>'
+                , "css": "cube.css"
+            }
+        },
+
     ];
+
+    exports.show = function (obj, configs) {
+        creatSpin(obj, configs);
+    }
+
+    exports.hidden = function (obj) {
+        var hasSpinnerObj = getArrJsonItem(spinnerArr, "obj", obj);
+        if (hasSpinnerObj.index != -1) {
+            spinnerArr.splice(hasSpinnerObj.index);
+            obj.find("#" + hasSpinnerObj.item.id).remove();
+        }
+    }
+    exports.get = function (obj) {
+        var hasSpinnerObj = getArrJsonItem(spinnerArr, "obj", obj);
+        if (hasSpinnerObj.index != -1) {
+            return hasSpinnerObj.item;
+        }
+        return null;
+    }
 
 
 }));
