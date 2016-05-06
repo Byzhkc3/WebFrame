@@ -237,6 +237,26 @@
             return "";
         },
         /*
+         * 动态加载JS/CSS 文件
+         * @scriptRoot:根文件路径
+         * @file:文件名/文件名数组
+         * */
+        includeJsCssFile:function (scriptRoot,file) {
+            var files = typeof file == "string" ? [file] : file;
+            for (var i = 0; i < files.length; i++) {
+                var name = files[i].replace(/^\s|\s$/g, "");
+                var att = name.split('.');
+                var ext = att[att.length - 1].toLowerCase();
+                var isCSS = ext == "css";
+                var tag = isCSS ? "link" : "script";
+                var attr = isCSS ? " type='text/css' rel='stylesheet' " : " language='javascript' type='text/javascript' ";
+                var link = (isCSS ? "href" : "src") + "='" + scriptRoot + name + "'";
+                if ($(tag + "[" + link + "]").length == 0) {
+                    $("head").append("<" + tag + attr + link + "></" + tag + ">");
+                }
+            }
+        },
+        /*
          * 获取页面做大的 z-index
          * @max:设置最大值
          * */
@@ -379,7 +399,7 @@
         },
         hex2Rgb: function (hex) {
             var reg = /^#([0-9a-fA-f]{3}|[0-9a-fA-f]{6})$/;
-            var sColor = this.toLowerCase();
+            var sColor = hex.toLowerCase();
             if (sColor && reg.test(sColor)) {
                 if (sColor.length === 4) {
                     var sColorNew = "#";

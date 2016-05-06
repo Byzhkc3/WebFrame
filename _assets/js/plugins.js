@@ -39,19 +39,98 @@
             //moment.locale('zh-cn');
             $("#aaaa").html(moment().add(7,'y').format('LLLL'));
 
-            SpinKit.show($("#bbbb"),{
-                "background":"rgba(188,188,10,.1)"
-                ,width:100
-                ,height:100
-
+            SpinKit.show($("#1"),{
+                "background":"rgba(255,255,255,.4)"
+                ,"size":100
+                ,"spin":"circle"
             });
-            SpinKit.show($("#cccc"),{
-                "position":{
-                    top:50
-                    ,left:80
-                }
-                ,color:"#202D90"
 
+            SpinKit.show($("#2"),{
+                "background":"rgba(188,188,10,.1)"
+                ,"size":80
+                ,color:"#AF1EA4"
+                ,"spin":"fading"
+            });
+            SpinKit.show($("#3"),{
+                color:"#202D90"
+                ,"spin":"square"
+
+            },function (thisObj) {
+                var aa=thisObj;
+            });
+            SpinKit.show($("#4"),{
+                "background":"rgba(188,188,10,.1)"
+                ,"size":80
+                ,color:"#AF1EA4"
+                ,"spin":"bounce"
+            });
+            SpinKit.show($("#5"),{
+                "background":"rgba(188,188,10,.1)"
+                ,"size":80
+                ,color:"#AF1EA4"
+                ,"spin":"double"
+            });
+            SpinKit.show($("#6"),{
+                "background":"rgba(188,188,10,.1)"
+                ,"size":80
+                ,color:"#AF1EA4"
+                ,"spin":"three"
+            });
+            SpinKit.show($("#7"),{
+                "background":"rgba(188,188,10,.1)"
+                ,"size":80
+                ,color:"#AF1EA4"
+                ,"spin":"cube"
+            });
+            SpinKit.show($("#8"),{
+                "background":"rgba(188,188,10,.1)"
+                ,"size":80
+                ,color:"#AF1EA4"
+                ,"spin":"dot"
+            });
+            SpinKit.show($("#9"),{
+                "background":"rgba(188,188,10,.1)"
+                ,"size":80
+                ,color:"#AF1EA4"
+                ,"spin":"grid"
+            });
+            SpinKit.show($("#10"),{
+                "background":"rgba(188,188,10,.1)"
+                ,"size":80
+                ,color:"#AF1EA4"
+                ,"spin":"folding"
+            });
+            SpinKit.show($("#11"),{
+                "background":"rgba(188,188,10,.1)"
+                ,"size":80
+                ,color:"#AF1EA4"
+                ,"spin":"timer"
+            });
+            SpinKit.show($("#12"),{
+                "background":"rgba(188,188,10,.1)"
+                ,"size":80
+                ,color:"#AF1EA4"
+                ,"spin":"location"
+            });
+            SpinKit.show($("#13"),{
+                "background":"rgba(188,188,10,.1)"
+                ,"size":80
+                ,color:"#AF1EA4"
+                ,"spin":"battery"
+            });
+            // SpinKit.show($("#14"),{
+            //     "background":"rgba(188,188,10,.1)"
+            //     ,"size":80
+            //     ,color:"#AF1EA4"
+            //     ,"spin":"rotation"
+            // });
+            SpinKit.show($("#14"),{
+                "background":"rgba(188,188,10,.1)"
+                ,"size":80
+                ,color:"#AF1EA4"
+                ,"spin":{
+                    images:"_assets/images/normal.gif"
+                }
             });
 
             // setTimeout(function () {
