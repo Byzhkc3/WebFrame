@@ -120,9 +120,7 @@
                 , "background-color": "#000"
             });
 
-
             this.resize(this.options);
-
         },
         resize: function (options) {
             if (options != null) {
