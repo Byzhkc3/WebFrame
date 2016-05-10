@@ -276,7 +276,6 @@
         _container.find("#" + _id).css({
             "position": "absolute"
             , "z-index": getmaxZindex() + 1
-            , "display": "inline-block"
             , "background-color": _background
         });
 
@@ -291,7 +290,7 @@
         var _spinnerHtml = "";
 
         if (typeof _spinObj === "string") {
-            _spinnerHtml = "<div id=" + _id + "bg></div>";
+            _spinnerHtml = "<div id=" + _id + "_img></div>";
         } else {
             _spinnerHtml = getArrJsonItem(_spinObj, "html").item.html;
             _spinnerHtml = _spinnerHtml.replace(/{SpinnerObjIDValue}/g, _id);
@@ -302,8 +301,8 @@
 
         _container.find("#" + _id + " .spinner").html(_spinnerHtml);
 
-        if (_container.find("#" + _id + "bg").length > 0) {
-            _container.find("#" + _id + "bg").css({
+        if (_container.find("#" + _id + "_img").length > 0) {
+            _container.find("#" + _id + "_img").css({
                 "width": "100%"
                 , "height": "100%"
                 , "background-image": "url(" + _spinObj + ")"
@@ -317,7 +316,6 @@
             "width": _size + "px"
             , "height": _size + "px"
             , "position": "relative"
-            , "display": "inline-block"
             , "overflow": "hidden"
             , "text-align": "center"
         });

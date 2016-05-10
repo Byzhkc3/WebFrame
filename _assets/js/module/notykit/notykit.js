@@ -109,7 +109,6 @@
             this.options.obj.find("#" + this.options.id).css({
                 "position": "absolute"
                 , "z-index": getmaxZindex() + 1
-                , "display": "inline-block"
                 , "background-color": this.options.background
             });
 
@@ -117,7 +116,6 @@
                 "width": this.options.width + "px"
                 , "height": this.options.height + "px"
                 , "position": "relative"
-                , "display": "inline-block"
                 , "overflow": "hidden"
                 , "background-color": "#000"
             });

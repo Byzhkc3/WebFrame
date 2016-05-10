@@ -44,9 +44,9 @@
             SpinKit.show($("#3"),{
                 size:200
             });
-            // NotyKit.show({
-            //     obj:$("#3")
-            // });
+             NotyKit.show({
+                 obj:$("#3")
+             });
             // noty({
             //     layout: 'center',
             //     type: 'information',
