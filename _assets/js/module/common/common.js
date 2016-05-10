@@ -241,7 +241,7 @@
          * @scriptRoot:根文件路径
          * @file:文件名/文件名数组
          * */
-        includeJsCssFile:function (scriptRoot,file) {
+        includeJsCssFile: function (scriptRoot, file) {
             var files = typeof file == "string" ? [file] : file;
             for (var i = 0; i < files.length; i++) {
                 var name = files[i].replace(/^\s|\s$/g, "");
@@ -258,16 +258,20 @@
         },
         /*
          * 获取页面做大的 z-index
+         * @obj:指定对象,默认为$('body *')
          * @max:设置最大值
          * */
-        getmaxZindex: function (max) {
-            max = max > 0 ? max + 1 : 0;
-            var maxZ = Math.max.apply(null, $.map($('body > *'), function (e, n) {
+        getmaxZindex: function (obj,max) {
+            obj = (typeof (obj) == "object" && obj.length > 0) ? obj.find("*") : $('body *');
+            max = max > 0 ? max + 1 : -1;
+            var maxZ = Math.max.apply(null, $.map(obj, function (e, n) {
                 if ($(e).css('position') == 'absolute' || $(e).css('position') == 'fixed')
                     return parseInt($(e).css('z-index')) || 1;
             }));
             maxZ = maxZ == -Infinity ? 1 : maxZ;
-            maxZ = maxZ < max ? maxZ : max;
+            if (max != -1) {
+                maxZ = maxZ < max ? maxZ : max;
+            }
             return maxZ;
         },
         /*
@@ -332,12 +336,12 @@
             window[window.webkitURL ? 'webkitURL' : 'URL']['revokeObjectURL'](blob);
         },
         /*
-        * 根据key,value获取对象obj:[{key1,values},{key2,values}]的值
-        * @obj:对象
-        * @key:键
-        * @value:值
-        * @return:{index,item}
-        * */
+         * 根据key,value获取对象obj:[{key1,values},{key2,values}]的值
+         * @obj:对象
+         * @key:键
+         * @value:值
+         * @return:{index,item}
+         * */
         getArrJsonItem: function (obj, key, value) {
             var k = (typeof (key) == "string" && key != "") ? key : null;
             var v = (typeof (value) != "undefined") ? value : null;
