@@ -73,6 +73,25 @@
         };
     }
 
+
+    function getJqueryEventString(arrayObj) {
+        var s = "";
+        $.each(arrayObj, function (index, item) {
+            var thisItem = (item.toLowerCase() === 'click') ? 'click'
+                : (item.toLowerCase() === 'hover') ? 'hover'
+                // : (item.toLowerCase() === 'hover') ? 'hover '
+                // : (item.toLowerCase() === 'hover') ? 'hover '
+                // : (item.toLowerCase() === 'hover') ? 'hover '
+                : "";
+            if (index < arrayObj.length - 1 && thisItem != "") {
+                thisItem += " ";
+            }
+
+            s += thisItem;
+        });
+        return s;
+    }
+
     var notykitDate = [];
 
     var template = '<div class="noty_message"><div class="noty_title"></div><div class="noty_text"></div><div class="noty_foot"></div></div>';
@@ -91,7 +110,7 @@
             , text: ''
             , closeItem: [{
                 container: 'noty_title'//noty_message,noty_title,noty_text,noty_foot,notykit_container,notykit_content
-                , layout: 'left'
+                , layout: 'centerright'
                 , addClass: ''
                 , text: '关闭'
                 , closeWith: ['click']
@@ -184,7 +203,6 @@
                 "width": this.options.width + "px"
                 , "height": this.options.height + "px"
                 , "position": "relative"
-                , "overflow": "hidden"
             });
 
             this.resize(this.options);
@@ -199,6 +217,37 @@
         addCloseEvent: function (obj, closeItem, closeFn) {
             if (obj.length > 0) {
                 $.each(closeItem, function (index, item) {
+                    var container = (typeof (item.container) != "undefined" && item.container !== "") ? item.container : "";
+                    var layout = (typeof (item.layout) != "undefined" && item.layout !== "") ? item.layout : "centerleft";
+                    var addClass = (typeof (item.addClass) != "undefined" && item.addClass !== "") ? item.addClass : "";
+                    var text = (typeof (item.text) != "undefined" && item.text !== "") ? item.text : "";
+                    var closeWith = (typeof (item.closeWith) != "undefined" && item.closeWith !== "") ?
+                        ((getJqueryEventString(item.closeWith) !== '') ? getJqueryEventString(item.closeWith) : ""
+                        ) : "";
+
+                    if (container != "" && closeWith != "") {
+                        if (text != "") {
+                            var closeTextObj = $("<span>" + text + "</span>");
+                            var thisObj = obj.find("." + container);
+                            thisObj.append(closeTextObj);
+
+                            var thisPosition = getObjPosition(thisObj, layout, closeTextObj.outerWidth(), closeTextObj.outerHeight());
+                            var _top = thisPosition.top;
+                            var _left = thisPosition.left;
+
+                            _top = (_top < 0 && (_top + thisObj.offset().top) < 0) ? -thisObj.offset().top : _top;
+                            _left = (_left < 0 && (_left + thisObj.offset().left) < 0) ? -thisObj.offset().left : _left;
+
+                            closeTextObj.css({
+                                "position":"relative"
+                                ,"top": _top + "px"
+                                , "left": _left + "px"
+                            });
+
+
+
+                        }
+                    }
 
                 });
             }
@@ -207,7 +256,7 @@
             if (options != null) {
                 var _id = options.id;
                 var obj = options.obj;
-                
+
                 if (!obj.is($('body'))) {
                     obj.find("#" + _id).css({
                         width: obj.outerWidth() + "px"
