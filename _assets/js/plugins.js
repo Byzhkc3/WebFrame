@@ -40,13 +40,15 @@
         complete: function () {
             //moment.locale('zh-cn');
             $("#aaaa").html(moment().add(7, 'y').format('LLLL'));
-
-            SpinKit.show($("#3"),{
-                size:200
+            SpinKit.show($("#3"), {
+                size: 200
             });
-             NotyKit.show({
-                 obj:$("#3")
-             });
+
+            NotyKit.show({
+                title:"数据测试"
+                ,text:"sfsadfsadfsadfdsa"
+
+            });
             // noty({
             //     layout: 'center',
             //     type: 'information',

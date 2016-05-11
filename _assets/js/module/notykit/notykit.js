@@ -41,22 +41,67 @@
         return maxZ;
     }
 
+    function getObjPosition(obj, position, width, height) {
+
+        var _top = (typeof (position) == "string" && (position).toLowerCase() == "top") ? 0
+            : (typeof (position) == "string" && (position).toLowerCase() == "center") ? (obj.outerHeight() - height) / 2
+            : (typeof (position) == "string" && (position).toLowerCase() == "bottom") ? obj.outerHeight() - height
+            : (typeof (position) == "string" && (position).toLowerCase() == "topleft") ? 0
+            : (typeof (position) == "string" && (position).toLowerCase() == "centerleft") ? (obj.outerHeight() - height) / 2
+            : (typeof (position) == "string" && (position).toLowerCase() == "bottomleft") ? obj.outerHeight() - height
+            : (typeof (position) == "string" && (position).toLowerCase() == "topright") ? 0
+            : (typeof (position) == "string" && (position).toLowerCase() == "centerright") ? (obj.outerHeight() - height) / 2
+            : (typeof (position) == "string" && (position).toLowerCase() == "bottomright") ? obj.outerHeight() - height
+            : (typeof (position) == "object" && position != null) ? (position.top > 0 ? position.top : 0)
+            : (obj.outerHeight() - height) / 2;
+
+        var _left = (typeof (position) == "string" && (position).toLowerCase() == "top") ? (obj.outerWidth() - width) / 2
+            : (typeof (position) == "string" && (position).toLowerCase() == "center") ? (obj.outerWidth() - width) / 2
+            : (typeof (position) == "string" && (position).toLowerCase() == "bottom") ? (obj.outerWidth() - width) / 2
+            : (typeof (position) == "string" && (position).toLowerCase() == "topleft") ? 0
+            : (typeof (position) == "string" && (position).toLowerCase() == "centerleft") ? 0
+            : (typeof (position) == "string" && (position).toLowerCase() == "bottomleft") ? 0
+            : (typeof (position) == "string" && (position).toLowerCase() == "topright") ? obj.outerWidth() - width
+            : (typeof (position) == "string" && (position).toLowerCase() == "centerright") ? obj.outerWidth() - width
+            : (typeof (position) == "string" && (position).toLowerCase() == "bottomright") ? obj.outerWidth() - width
+            : (typeof (position) == "object" && position != null) ? (position.left > 0 ? position.left : 0)
+            : (obj.outerWidth() - width) / 2;
+
+        return {
+            top: _top
+            , left: _left
+        };
+    }
+
     var notykitDate = [];
 
+    var template = '<div class="noty_message"><div class="noty_title"></div><div class="noty_text"></div><div class="noty_foot"></div></div>';
 
     var NotyKitObj = {
         options: {
             id: ""
             , obj: $('body')
-            , width: 3000
-            , height: 2000
-            , background: "rgba(255,255,255,.5)"
+            , width: 600
+            , height: 400
+            , background: "rgba(0,0,0,.1)"
+            , shade: true
             , layout: 'center'
+            , template: template
+            , title: ''
+            , text: ''
+            , closeItem: [{
+                container: 'noty_title'//noty_message,noty_title,noty_text,noty_foot,notykit_container,notykit_content
+                , layout: 'left'
+                , addClass: ''
+                , text: '关闭'
+                , closeWith: ['click']
+            }]
+            , closeFn: function (notyObj) {
+
+            }
             , theme: 'defaultTheme'
             , type: 'alert'
-            , text: ''
             , dismissQueue: true
-            , template: '<div class="noty_message"><span class="noty_text"></span><div class="noty_close"></div></div>'
             , animation: {
                 open: {height: 'toggle'},
                 close: {height: 'toggle'},
@@ -91,20 +136,43 @@
             var _width = options.width > 0 ? options.width : this.options.width;
             var _height = options.height > 0 ? options.height : this.options.height;
             var _background = (typeof (options.background) != "undefined" && options.background.indexOf("rgba(") != -1) ? options.background : this.options.background;
+            var _shade = (typeof (options.shade) != "undefined" && !options.shade) ? false : this.options.shade;
             var _layout = (typeof (options.layout) != "undefined" && options.layout !== "") ? options.layout : this.options.layout;
+            var _template = (typeof (options.template) != "undefined" && options.template !== "") ? options.template : this.options.template;
+            var _title = (typeof (options.title) != "undefined" && options.title !== "") ? options.title : this.options.title;
+            var _text = (typeof (options.text) != "undefined" && options.text !== "") ? options.text : this.options.text;
+            var _closeItem = (typeof (options.closeItem) != "undefined" && options.closeItem === "object") ? options.closeItem : this.options.closeItem;
+            var _closeFn = (typeof (options.closeFn) != "undefined" && options.closeFn === "function") ? options.closeFn : this.options.closeFn;
+
 
             this.options.id = _id;
             this.options.obj = _container;
             this.options.width = _width;
             this.options.height = _height;
-            this.options.background = _background;
+            this.options.background = (!_shade) ? 'transparent' : _background;
+            this.options.shade = _shade;
             this.options.layout = _layout;
+            this.options.template = _template;
+            this.options.title = _title;
+            this.options.text = _text;
+            this.options.closeItem = _closeItem;
+            this.options.closeFn = _closeFn;
 
+
+            // var store = {};
+            // store[this.options.id] = this.options;
+            notykitDate.push({
+                id: this.options.id
+                , notykit: this.options
+            });
             this.build();
         },
         build: function () {
             var _html = $("<div class='notykit_container'><div class='notykit_content'></div></div>");
             this.options.obj.append(_html.attr("id", this.options.id));
+            this.options.obj.find("#" + this.options.id + " .notykit_content").html(this.options.template);
+            this.options.obj.find("#" + this.options.id + " .noty_title").html(this.options.title);
+            this.options.obj.find("#" + this.options.id + " .noty_text").html(this.options.text);
 
             this.options.obj.find("#" + this.options.id).css({
                 "position": "absolute"
@@ -117,17 +185,29 @@
                 , "height": this.options.height + "px"
                 , "position": "relative"
                 , "overflow": "hidden"
-                , "background-color": "#000"
             });
 
             this.resize(this.options);
+            this.addCloseEvent(this.options.obj.find("#" + this.options.id), this.options.closeItem, this.options.closeFn);
+
+            $(window).on("resize", function () {
+                $.each(notykitDate, function (index, item) {
+                    NotyKitObj.resize(item.notykit);
+                });
+            });
+        },
+        addCloseEvent: function (obj, closeItem, closeFn) {
+            if (obj.length > 0) {
+                $.each(closeItem, function (index, item) {
+
+                });
+            }
         },
         resize: function (options) {
             if (options != null) {
                 var _id = options.id;
                 var obj = options.obj;
-
-
+                
                 if (!obj.is($('body'))) {
                     obj.find("#" + _id).css({
                         width: obj.outerWidth() + "px"
@@ -160,57 +240,17 @@
                 var _top = 0;
                 var _left = 0;
                 if (!obj.is($('body'))) {
-                    _top = (typeof (options.layout) == "string" && (options.layout).toLowerCase() == "top") ? 0
-                        : (typeof (options.layout) == "string" && (options.layout).toLowerCase() == "center") ? (obj.outerHeight() - options.height) / 2
-                        : (typeof (options.layout) == "string" && (options.layout).toLowerCase() == "bottom") ? obj.outerHeight() - options.height
-                        : (typeof (options.layout) == "string" && (options.layout).toLowerCase() == "topleft") ? 0
-                        : (typeof (options.layout) == "string" && (options.layout).toLowerCase() == "centerleft") ? (obj.outerHeight() - options.height) / 2
-                        : (typeof (options.layout) == "string" && (options.layout).toLowerCase() == "bottomleft") ? obj.outerHeight() - options.height
-                        : (typeof (options.layout) == "string" && (options.layout).toLowerCase() == "topright") ? 0
-                        : (typeof (options.layout) == "string" && (options.layout).toLowerCase() == "centerright") ? (obj.outerHeight() - options.height) / 2
-                        : (typeof (options.layout) == "string" && (options.layout).toLowerCase() == "bottomright") ? obj.outerHeight() - options.height
-                        : (typeof (options.layout) == "object" && options.layout != null) ? (options.layout.top > 0 ? options.layout.top : 0)
-                        : (obj.outerHeight() - options.height) / 2;
-
-                    _left = (typeof (options.layout) == "string" && (options.layout).toLowerCase() == "top") ? (obj.outerWidth() - options.width) / 2
-                        : (typeof (options.layout) == "string" && (options.layout).toLowerCase() == "center") ? (obj.outerWidth() - options.width) / 2
-                        : (typeof (options.layout) == "string" && (options.layout).toLowerCase() == "bottom") ? (obj.outerWidth() - options.width) / 2
-                        : (typeof (options.layout) == "string" && (options.layout).toLowerCase() == "topleft") ? 0
-                        : (typeof (options.layout) == "string" && (options.layout).toLowerCase() == "centerleft") ? 0
-                        : (typeof (options.layout) == "string" && (options.layout).toLowerCase() == "bottomleft") ? 0
-                        : (typeof (options.layout) == "string" && (options.layout).toLowerCase() == "topright") ? obj.outerWidth() - options.width
-                        : (typeof (options.layout) == "string" && (options.layout).toLowerCase() == "centerright") ? obj.outerWidth() - options.width
-                        : (typeof (options.layout) == "string" && (options.layout).toLowerCase() == "bottomright") ? obj.outerWidth() - options.width
-                        : (typeof (options.layout) == "object" && options.layout != null) ? (options.layout.left > 0 ? options.layout.left : 0)
-                        : (obj.outerWidth() - options.width) / 2;
+                    var thisPosition = getObjPosition(obj, options.layout, options.width, options.height);
+                    _top = thisPosition.top;
+                    _left = thisPosition.left;
 
                     _top = (_top < 0 && (_top + obj.offset().top) < 0) ? -obj.offset().top : _top;
                     _left = (_left < 0 && (_left + obj.offset().left) < 0) ? -obj.offset().left : _left;
                 }
                 else {
-                    _top = (typeof (options.layout) == "string" && (options.layout).toLowerCase() == "top") ? 0
-                        : (typeof (options.layout) == "string" && (options.layout).toLowerCase() == "center") ? (obj.find("#" + _id).height() - options.height) / 2
-                        : (typeof (options.layout) == "string" && (options.layout).toLowerCase() == "bottom") ? (obj.find("#" + _id).height() - options.height)
-                        : (typeof (options.layout) == "string" && (options.layout).toLowerCase() == "topleft") ? 0
-                        : (typeof (options.layout) == "string" && (options.layout).toLowerCase() == "centerleft") ? (obj.find("#" + _id).height() - options.height) / 2
-                        : (typeof (options.layout) == "string" && (options.layout).toLowerCase() == "bottomleft") ? (obj.find("#" + _id).height() - options.height)
-                        : (typeof (options.layout) == "string" && (options.layout).toLowerCase() == "topright") ? 0
-                        : (typeof (options.layout) == "string" && (options.layout).toLowerCase() == "centerright") ? (obj.find("#" + _id).height() - options.height) / 2
-                        : (typeof (options.layout) == "string" && (options.layout).toLowerCase() == "bottomright") ? (obj.find("#" + _id).height() - options.height)
-                        : (typeof (options.layout) == "object" && options.layout != null) ? (options.layout.top > 0 ? options.layout.top : 0)
-                        : (obj.find("#" + _id).height() - options.height) / 2;
-
-                    _left = (typeof (options.layout) == "string" && (options.layout).toLowerCase() == "top") ? (obj.find("#" + _id).width() - options.width) / 2
-                        : (typeof (options.layout) == "string" && (options.layout).toLowerCase() == "center") ? (obj.find("#" + _id).width() - options.width) / 2
-                        : (typeof (options.layout) == "string" && (options.layout).toLowerCase() == "bottom") ? (obj.find("#" + _id).width() - options.width) / 2
-                        : (typeof (options.layout) == "string" && (options.layout).toLowerCase() == "topleft") ? 0
-                        : (typeof (options.layout) == "string" && (options.layout).toLowerCase() == "centerleft") ? 0
-                        : (typeof (options.layout) == "string" && (options.layout).toLowerCase() == "bottomleft") ? 0
-                        : (typeof (options.layout) == "string" && (options.layout).toLowerCase() == "topright") ? (obj.find("#" + _id).width() - options.width)
-                        : (typeof (options.layout) == "string" && (options.layout).toLowerCase() == "centerright") ? (obj.find("#" + _id).width() - options.width)
-                        : (typeof (options.layout) == "string" && (options.layout).toLowerCase() == "bottomright") ? (obj.find("#" + _id).width() - options.width)
-                        : (typeof (options.layout) == "object" && options.layout != null) ? (options.layout.left > 0 ? options.layout.left : 0)
-                        : (obj.find("#" + _id).width() - options.width) / 2;
+                    var thisPosition = getObjPosition(obj.find("#" + _id), options.layout, options.width, options.height);
+                    _top = thisPosition.top;
+                    _left = thisPosition.left;
 
                     _top = _top < 0 ? 0 : _top;
                     _left = _left < 0 ? 0 : _left;
@@ -221,6 +261,9 @@
                     , "left": _left + "px"
                 });
             }
+        },
+        close: function (options) {
+
         }
     }
 

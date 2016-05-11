@@ -100,6 +100,38 @@
         return maxZ;
     }
 
+    function getObjPosition(obj, position, width, height) {
+
+        var _top = (typeof (position) == "string" && (position).toLowerCase() == "top") ? 0
+            : (typeof (position) == "string" && (position).toLowerCase() == "center") ? (obj.outerHeight() - height) / 2
+            : (typeof (position) == "string" && (position).toLowerCase() == "bottom") ? obj.outerHeight() - height
+            : (typeof (position) == "string" && (position).toLowerCase() == "topleft") ? 0
+            : (typeof (position) == "string" && (position).toLowerCase() == "centerleft") ? (obj.outerHeight() - height) / 2
+            : (typeof (position) == "string" && (position).toLowerCase() == "bottomleft") ? obj.outerHeight() - height
+            : (typeof (position) == "string" && (position).toLowerCase() == "topright") ? 0
+            : (typeof (position) == "string" && (position).toLowerCase() == "centerright") ? (obj.outerHeight() - height) / 2
+            : (typeof (position) == "string" && (position).toLowerCase() == "bottomright") ? obj.outerHeight() - height
+            : (typeof (position) == "object" && position != null) ? (position.top > 0 ? position.top : 0)
+            : (obj.outerHeight() - height) / 2;
+
+        var _left = (typeof (position) == "string" && (position).toLowerCase() == "top") ? (obj.outerWidth() - width) / 2
+            : (typeof (position) == "string" && (position).toLowerCase() == "center") ? (obj.outerWidth() - width) / 2
+            : (typeof (position) == "string" && (position).toLowerCase() == "bottom") ? (obj.outerWidth() - width) / 2
+            : (typeof (position) == "string" && (position).toLowerCase() == "topleft") ? 0
+            : (typeof (position) == "string" && (position).toLowerCase() == "centerleft") ? 0
+            : (typeof (position) == "string" && (position).toLowerCase() == "bottomleft") ? 0
+            : (typeof (position) == "string" && (position).toLowerCase() == "topright") ? obj.outerWidth() - width
+            : (typeof (position) == "string" && (position).toLowerCase() == "centerright") ? obj.outerWidth() - width
+            : (typeof (position) == "string" && (position).toLowerCase() == "bottomright") ? obj.outerWidth() - width
+            : (typeof (position) == "object" && position != null) ? (position.left > 0 ? position.left : 0)
+            : (obj.outerWidth() - width) / 2;
+
+        return {
+            top: _top
+            , left: _left
+        };
+    }
+
     var spinnerArr = [];
 
     var _html = '<div class="spinner_container">'
@@ -152,58 +184,21 @@
 
             var _top = 0;
             var _left = 0;
+            var thisPosition = null;
             if (!obj.is($('body'))) {
-                _top = (typeof (options.position) == "string" && (options.position).toLowerCase() == "top") ? 0
-                    : (typeof (options.position) == "string" && (options.position).toLowerCase() == "center") ? (obj.outerHeight() - options.size) / 2
-                    : (typeof (options.position) == "string" && (options.position).toLowerCase() == "bottom") ? obj.outerHeight() - options.size
-                    : (typeof (options.position) == "string" && (options.position).toLowerCase() == "topleft") ? 0
-                    : (typeof (options.position) == "string" && (options.position).toLowerCase() == "centerleft") ? (obj.outerHeight() - options.size) / 2
-                    : (typeof (options.position) == "string" && (options.position).toLowerCase() == "bottomleft") ? obj.outerHeight() - options.size
-                    : (typeof (options.position) == "string" && (options.position).toLowerCase() == "topright") ? 0
-                    : (typeof (options.position) == "string" && (options.position).toLowerCase() == "centerright") ? (obj.outerHeight() - options.size) / 2
-                    : (typeof (options.position) == "string" && (options.position).toLowerCase() == "bottomright") ? obj.outerHeight() - options.size
-                    : (typeof (options.position) == "object" && options.position != null) ? (options.position.top > 0 ? options.position.top : 0)
-                    : (obj.outerHeight() - options.size) / 2;
 
-                _left = (typeof (options.position) == "string" && (options.position).toLowerCase() == "top") ? (obj.outerWidth() - options.size) / 2
-                    : (typeof (options.position) == "string" && (options.position).toLowerCase() == "center") ? (obj.outerWidth() - options.size) / 2
-                    : (typeof (options.position) == "string" && (options.position).toLowerCase() == "bottom") ? (obj.outerWidth() - options.size) / 2
-                    : (typeof (options.position) == "string" && (options.position).toLowerCase() == "topleft") ? 0
-                    : (typeof (options.position) == "string" && (options.position).toLowerCase() == "centerleft") ? 0
-                    : (typeof (options.position) == "string" && (options.position).toLowerCase() == "bottomleft") ? 0
-                    : (typeof (options.position) == "string" && (options.position).toLowerCase() == "topright") ? obj.outerWidth() - options.size
-                    : (typeof (options.position) == "string" && (options.position).toLowerCase() == "centerright") ? obj.outerWidth() - options.size
-                    : (typeof (options.position) == "string" && (options.position).toLowerCase() == "bottomright") ? obj.outerWidth() - options.size
-                    : (typeof (options.position) == "object" && options.position != null) ? (options.position.left > 0 ? options.position.left : 0)
-                    : (obj.outerWidth() - options.size) / 2;
+                thisPosition = getObjPosition(obj, options.position, options.size, options.size);
+                _top = thisPosition.top;
+                _left = thisPosition.left;
 
                 _top = (_top < 0 && (_top + obj.offset().top) < 0) ? -obj.offset().top : _top;
                 _left = (_left < 0 && (_left + obj.offset().left) < 0) ? -obj.offset().left : _left;
             }
             else {
-                _top = (typeof (options.position) == "string" && (options.position).toLowerCase() == "top") ? 0
-                    : (typeof (options.position) == "string" && (options.position).toLowerCase() == "center") ? (obj.find("#" + _id).height() - options.size) / 2
-                    : (typeof (options.position) == "string" && (options.position).toLowerCase() == "bottom") ? (obj.find("#" + _id).height() - options.size)
-                    : (typeof (options.position) == "string" && (options.position).toLowerCase() == "topleft") ? 0
-                    : (typeof (options.position) == "string" && (options.position).toLowerCase() == "centerleft") ? (obj.find("#" + _id).height() - options.size) / 2
-                    : (typeof (options.position) == "string" && (options.position).toLowerCase() == "bottomleft") ? (obj.find("#" + _id).height() - options.size)
-                    : (typeof (options.position) == "string" && (options.position).toLowerCase() == "topright") ? 0
-                    : (typeof (options.position) == "string" && (options.position).toLowerCase() == "centerright") ? (obj.find("#" + _id).height() - options.size) / 2
-                    : (typeof (options.position) == "string" && (options.position).toLowerCase() == "bottomright") ? (obj.find("#" + _id).height() - options.size)
-                    : (typeof (options.position) == "object" && options.position != null) ? (options.position.top > 0 ? options.position.top : 0)
-                    : (obj.find("#" + _id).height() - options.size) / 2;
 
-                _left = (typeof (options.position) == "string" && (options.position).toLowerCase() == "top") ? (obj.find("#" + _id).width() - options.size) / 2
-                    : (typeof (options.position) == "string" && (options.position).toLowerCase() == "center") ? (obj.find("#" + _id).width() - options.size) / 2
-                    : (typeof (options.position) == "string" && (options.position).toLowerCase() == "bottom") ? (obj.find("#" + _id).width() - options.size) / 2
-                    : (typeof (options.position) == "string" && (options.position).toLowerCase() == "topleft") ? 0
-                    : (typeof (options.position) == "string" && (options.position).toLowerCase() == "centerleft") ? 0
-                    : (typeof (options.position) == "string" && (options.position).toLowerCase() == "bottomleft") ? 0
-                    : (typeof (options.position) == "string" && (options.position).toLowerCase() == "topright") ? (obj.find("#" + _id).width() - options.size)
-                    : (typeof (options.position) == "string" && (options.position).toLowerCase() == "centerright") ? (obj.find("#" + _id).width() - options.size)
-                    : (typeof (options.position) == "string" && (options.position).toLowerCase() == "bottomright") ? (obj.find("#" + _id).width() - options.size)
-                    : (typeof (options.position) == "object" && options.position != null) ? (options.position.left > 0 ? options.position.left : 0)
-                    : (obj.find("#" + _id).width() - options.size) / 2;
+                thisPosition = getObjPosition(obj.find("#" + _id), options.position, options.size, options.size);
+                _top = thisPosition.top;
+                _left = thisPosition.left;
 
                 _top = _top < 0 ? 0 : _top;
                 _left = _left < 0 ? 0 : _left;
@@ -244,15 +239,11 @@
                 spin: _spin
                 , size: _size
                 , position: _position
-                , background: _background
+                , background: (!_shade) ? 'transparent' : _background
                 , color: _color
                 , shade: _shade
             }
         });
-
-        if (!_shade) {
-            _background = "transparent";
-        }
 
         var _spinObj = (typeof (configs.spin) === "string" && configs.spin === "circle") ? getArrJsonItem(spinObj, "circle").item
             : (typeof (configs.spin) === "string" && configs.spin === "fading") ? getArrJsonItem(spinObj, "fading").item
