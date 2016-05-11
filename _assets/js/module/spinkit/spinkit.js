@@ -284,7 +284,6 @@
             "width": _size + "px"
             , "height": _size + "px"
             , "position": "relative"
-            , "display": "inline-block"
             , "overflow": "hidden"
         });
         var _spinnerHtml = "";
