@@ -41,6 +41,28 @@
         return maxZ;
     }
 
+    function getArrJsonItem(obj, key, value) {
+        var k = (typeof (key) == "string" && key != "") ? key : null;
+        var v = (typeof (value) != "undefined") ? value : null;
+        if (typeof (obj) == "object" && obj != null && k != null) {
+            for (var item in obj) {
+                if (v != null) {
+                    if (obj[item][k] === v || obj[item][k].is(v)) {
+                        return {index: item, item: obj[item]};
+                        break;
+                    }
+                }
+                else {
+                    if (obj[item].hasOwnProperty(k)) {
+                        return {index: item, item: obj[item]};
+                        break;
+                    }
+                }
+            }
+        }
+        return {index: -1, item: null};
+    }
+
     function getObjPosition(obj, position, width, height) {
 
         var _top = (typeof (position) == "string" && (position).toLowerCase() == "top") ? 0
@@ -79,9 +101,21 @@
         $.each(arrayObj, function (index, item) {
             var thisItem = (item.toLowerCase() === 'click') ? 'click'
                 : (item.toLowerCase() === 'hover') ? 'hover'
-                // : (item.toLowerCase() === 'hover') ? 'hover '
-                // : (item.toLowerCase() === 'hover') ? 'hover '
-                // : (item.toLowerCase() === 'hover') ? 'hover '
+                : (item.toLowerCase() === 'dblclick') ? 'dblclick'
+                : (item.toLowerCase() === 'mousedown') ? 'mousedown'
+                : (item.toLowerCase() === 'mousemove') ? 'mousemove'
+                : (item.toLowerCase() === 'mouseout') ? 'mouseout'
+                : (item.toLowerCase() === 'mouseover') ? 'mouseover'
+                : (item.toLowerCase() === 'mouseup') ? 'mouseup'
+                : (item.toLowerCase() === 'change') ? 'change'
+                : (item.toLowerCase() === 'input') ? 'input propertychange'
+                : (item.toLowerCase() === 'keydown') ? 'keydown'
+                : (item.toLowerCase() === 'keypress') ? 'keypress'
+                : (item.toLowerCase() === 'reset') ? 'reset'
+                : (item.toLowerCase() === 'resize') ? 'resize'
+                : (item.toLowerCase() === 'select') ? 'select'
+                : (item.toLowerCase() === 'submit') ? 'submit'
+                : (item.toLowerCase() === 'unload') ? 'unload'
                 : "";
             if (index < arrayObj.length - 1 && thisItem != "") {
                 thisItem += " ";
@@ -107,17 +141,43 @@
             , layout: 'center'
             , template: template
             , title: ''
-            , text: ''
+            , text: 'sdafsafsdafds'
             , closeItem: [{
-                container: 'noty_title'//noty_message,noty_title,noty_text,noty_foot,notykit_container,notykit_content
-                , layout: 'centerright'
-                , addClass: ''
-                , text: '关闭'
+                container: 'noty_title'//noty_message,noty_title,noty_text,noty_foot,notykit_content,notykit_container
                 , closeWith: ['click']
+                , text: '关闭'//当 text 不为空时候下面配置生效
+                , layout: 'centerright'
+                , addClass: 'close'
             }]
-            , closeFn: function (notyObj) {
+            , callback: {
+                onShow: function (notykit) {
 
+                }
+                , afterShow: function (notykit) {
+
+                }
+                , onClose: function (notykit) {
+
+                }
+                , afterClose: function (notykit) {
+
+                }
             }
+            , buttons: [{
+                container:''//noty_message,noty_title,noty_text,noty_foot,notykit_content,notykit_container
+                ,addClass:''
+                ,closeWith:['click']
+                ,text:''
+                ,callback:{
+                    onButton:function (notykit) {
+                        
+                    }
+                    ,afterButton:function (notykit) {
+                        
+                    }
+                }
+            }]
+
             , theme: 'defaultTheme'
             , type: 'alert'
             , dismissQueue: true
@@ -133,20 +193,6 @@
             , modal: false
             , maxVisible: 5
             , killer: false
-            , closeWith: ['click']
-            , callback: {
-                onShow: function () {
-                }
-                , afterShow: function () {
-                }
-                , onClose: function () {
-                }
-                , afterClose: function () {
-                }
-                , onCloseClick: function () {
-                }
-            }
-            , buttons: false
         },
         init: function (options) {
             options = (typeof (options) == "object" && options != null) ? options : this.options;
@@ -161,7 +207,7 @@
             var _title = (typeof (options.title) != "undefined" && options.title !== "") ? options.title : this.options.title;
             var _text = (typeof (options.text) != "undefined" && options.text !== "") ? options.text : this.options.text;
             var _closeItem = (typeof (options.closeItem) != "undefined" && options.closeItem === "object") ? options.closeItem : this.options.closeItem;
-            var _closeFn = (typeof (options.closeFn) != "undefined" && options.closeFn === "function") ? options.closeFn : this.options.closeFn;
+            var _callback = (typeof (options.callback) != "undefined" && options.callback === "object") ? options.callback : this.options.callback;
 
 
             this.options.id = _id;
@@ -175,7 +221,7 @@
             this.options.title = _title;
             this.options.text = _text;
             this.options.closeItem = _closeItem;
-            this.options.closeFn = _closeFn;
+            this.options.callback = _callback;
 
 
             // var store = {};
@@ -184,9 +230,22 @@
                 id: this.options.id
                 , notykit: this.options
             });
+
             this.build();
         },
         build: function () {
+
+            var callbackObj = (typeof this.options.callback === "object" && this.options.callback != null) ? this.options.callback : null;
+            var onShowFn = (typeof callbackObj.onShow === "function") ? callbackObj.onShow : function () {
+            };
+            var afterShowFn = (typeof callbackObj.afterShow === "function") ? callbackObj.afterShow : function () {
+            };
+
+
+            if (typeof onShowFn === "function") {
+                onShowFn(this.options);
+            }
+
             var _html = $("<div class='notykit_container'><div class='notykit_content'></div></div>");
             this.options.obj.append(_html.attr("id", this.options.id));
             this.options.obj.find("#" + this.options.id + " .notykit_content").html(this.options.template);
@@ -199,60 +258,106 @@
                 , "background-color": this.options.background
             });
 
+            //noty_message,noty_title,noty_text,noty_foot,notykit_content,notykit_container
+            this.options.obj.find("#" + this.options.id + " .notykit_content").css({
+                "position": "relative"
+            });
+            this.options.obj.find("#" + this.options.id + " .noty_message").css({
+                "position": "relative"
+            });
+            this.options.obj.find("#" + this.options.id + " .noty_message > *").css({
+                "position": "relative"
+            });
+
             this.options.obj.find("#" + this.options.id + " .notykit_content").css({
                 "width": this.options.width + "px"
                 , "height": this.options.height + "px"
-                , "position": "relative"
+                , "overflow": "hidden"
             });
 
-            this.resize(this.options);
-            this.addCloseEvent(this.options.obj.find("#" + this.options.id), this.options.closeItem, this.options.closeFn);
+            this.resize_noty(this.options);
+            //添加关闭
+            this.addCloseEvent(this.options, this.options.closeItem);
 
             $(window).on("resize", function () {
                 $.each(notykitDate, function (index, item) {
-                    NotyKitObj.resize(item.notykit);
+                    NotyKitObj.resize_noty(item.notykit);
                 });
             });
+
+            if (typeof afterShowFn === "function") {
+                afterShowFn(this.options);
+            }
         },
-        addCloseEvent: function (obj, closeItem, closeFn) {
+        addCloseEvent: function (notykit, closeItem) {
+            var obj = notykit.obj.find("#" + this.options.id);
             if (obj.length > 0) {
                 $.each(closeItem, function (index, item) {
                     var container = (typeof (item.container) != "undefined" && item.container !== "") ? item.container : "";
+                    container = container.toLowerCase() === "noty_message" ? "noty_message"
+                        : container.toLowerCase() === "noty_title" ? "noty_title"
+                        : container.toLowerCase() === "noty_text" ? "noty_text"
+                        : container.toLowerCase() === "noty_foot" ? "noty_foot"
+                        : container.toLowerCase() === "notykit_content" ? "notykit_content"
+                        : "notykit_container";
+
                     var layout = (typeof (item.layout) != "undefined" && item.layout !== "") ? item.layout : "centerleft";
                     var addClass = (typeof (item.addClass) != "undefined" && item.addClass !== "") ? item.addClass : "";
                     var text = (typeof (item.text) != "undefined" && item.text !== "") ? item.text : "";
                     var closeWith = (typeof (item.closeWith) != "undefined" && item.closeWith !== "") ?
                         ((getJqueryEventString(item.closeWith) !== '') ? getJqueryEventString(item.closeWith) : ""
                         ) : "";
-
                     if (container != "" && closeWith != "") {
+                        var thisObj = obj.find("." + container);
+                        if (container === "notykit_container")
+                            thisObj = obj;
+
                         if (text != "") {
-                            var closeTextObj = $("<span>" + text + "</span>");
-                            var thisObj = obj.find("." + container);
-                            thisObj.append(closeTextObj);
-
-                            var thisPosition = getObjPosition(thisObj, layout, closeTextObj.outerWidth(), closeTextObj.outerHeight());
-                            var _top = thisPosition.top;
-                            var _left = thisPosition.left;
-
-                            _top = (_top < 0 && (_top + thisObj.offset().top) < 0) ? -thisObj.offset().top : _top;
-                            _left = (_left < 0 && (_left + thisObj.offset().left) < 0) ? -thisObj.offset().left : _left;
-
+                            var closeTextObj = $("<div>" + text + "</div>");
+                            if (addClass != "") {
+                                closeTextObj.addClass(addClass);
+                            }
                             closeTextObj.css({
-                                "position":"relative"
-                                ,"top": _top + "px"
-                                , "left": _left + "px"
+                                "position": "absolute"
                             });
 
+                            thisObj.append(closeTextObj);
 
+                            NotyKitObj.resize_close(thisObj, layout, closeTextObj);
 
+                            $(window).on("resize", function () {
+                                NotyKitObj.resize_close(thisObj, layout, closeTextObj);
+                            });
+
+                            closeTextObj.off(closeWith);
+                            closeTextObj.on(closeWith, function () {
+                                NotyKitObj.close(notykit);
+                            });
                         }
-                    }
+                        else {
+                            thisObj.off(closeWith);
+                            thisObj.on(closeWith, function () {
+                                NotyKitObj.close(notykit);
+                            });
+                        }
 
+                    }
                 });
             }
         },
-        resize: function (options) {
+        resize_close: function (appendObj, layout, closeObj) {
+            var thisPosition = getObjPosition(appendObj, layout, closeObj.outerWidth(), closeObj.outerHeight());
+            var _top = thisPosition.top;
+            var _left = thisPosition.left;
+
+            _top = (_top < 0 && (_top + appendObj.offset().top) < 0) ? -appendObj.offset().top : _top;
+            _left = (_left < 0 && (_left + appendObj.offset().left) < 0) ? -appendObj.offset().left : _left;
+            closeObj.css({
+                "top": _top + "px"
+                , "left": _left + "px"
+            });
+        },
+        resize_noty: function (options) {
             if (options != null) {
                 var _id = options.id;
                 var obj = options.obj;
@@ -311,14 +416,47 @@
                 });
             }
         },
-        close: function (options) {
+        close: function (notykit) {
+            var id = notykit.id;
+            var obj = notykit.obj;
+            var callbackObj = (typeof notykit.callback === "object" && notykit.callback != null) ? notykit.callback : null;
+            var onCloseFn = (typeof callbackObj.onClose === "function") ? callbackObj.onClose : function () {
 
-        }
+            };
+
+            var afterCloseFn = (typeof callbackObj.afterClose === "function") ? callbackObj.afterClose : function () {
+
+            };
+
+            if (typeof onCloseFn === "function") {
+                onCloseFn(notykit);
+            }
+
+            if (obj.length > 0) {
+                var hasNotykitObj = getArrJsonItem(notykitDate, "id", id);
+                var hasNotykitIndex = hasNotykitObj.index;
+                if (hasNotykitIndex != -1) {
+                    notykitDate.splice(hasNotykitIndex);
+                    obj.find("#" + id).remove();
+                    if (typeof afterCloseFn === "function") {
+                        afterCloseFn(notykit);
+                    }
+                }
+            }
+        },
+
     }
 
     exports.show = function (options) {
-        var notification = Object.create(NotyKitObj).init(options);
-        //NotyKitObj.init(obj,options);
+        Object.create(NotyKitObj).init(options);
+    };
+
+    exports.close=function (notykit) {
+        Object.create(NotyKitObj).close(notykit);
+    };
+
+    exports.closeAll=function () {
+        //Object.create(NotyKitObj).close(notykit);
     };
 
 }));

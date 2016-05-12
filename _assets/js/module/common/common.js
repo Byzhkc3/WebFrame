@@ -187,7 +187,7 @@
         formateBankNo: function (bankNo) {
             if (bankNo == "") return;
             var bankAccount = new String(bankNo);
-            bankAccount = bankAccount.substring(0, 22);
+            bankAccount = bankAccount.substring(0, 40);
             /*帐号的总数, 包括空格在内 */
             if (bankAccount.match(".[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{7}") == null) {
                 /* 对照格式 */
@@ -202,11 +202,14 @@
                     bankAccount = "";
                     for (i = 0; i < accountNumeric.length; i++) {    /* 可将以下空格改为-,效果也不错 */
                         if (i == 4) bankAccount = bankAccount + " ";
-                        /* 帐号第四位数后加空格 */
                         if (i == 8) bankAccount = bankAccount + " ";
-                        /* 帐号第八位数后加空格 */
                         if (i == 12) bankAccount = bankAccount + " ";
-                        /* 帐号第十二位后数后加空格 */
+                        //添加
+                        if (i == 16) bankAccount = bankAccount + " ";
+                        if (i == 20) bankAccount = bankAccount + " ";
+                        if (i == 24) bankAccount = bankAccount + " ";
+                        if (i == 28) bankAccount = bankAccount + " ";
+
                         bankAccount = bankAccount + accountNumeric.substr(i, 1)
                     }
                 }

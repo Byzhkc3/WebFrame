@@ -31,6 +31,7 @@
             , 'html5media': '_assets/js/public/html5media/html5media-1.1.8.min.js'//多媒体
             , 'moment': 'https://cdn.jsdelivr.net/g/momentjs@2.13.0(moment.min.js+locales.min.js)'//日期
             , 'validator': 'https://cdn.jsdelivr.net/validator/5.2.0/validator.min.js'//验证
+            , 'common': '_assets/js/module/common/common.js'//加载动画
             , 'spink': '_assets/js/module/spinkit/spinkit.js'//加载动画
             , 'noty': '_assets/js/module/notykit/notykit.js'//对话框
         },
@@ -39,16 +40,24 @@
         },
         complete: function () {
             //moment.locale('zh-cn');
+
+            // SpinKit.show($("#3"), {
+            //     size: 200
+            // });
+            //
+            // NotyKit.show({
+            //     title:"数据测试"
+            //
+            // });
+
+            $("input").on("input propertychange",function () {
+                var value = $(this).val();
+                if (value != "") {
+                    $(this).val("asfsad");
+                }
+            });
+
             $("#aaaa").html(moment().add(7, 'y').format('LLLL'));
-            SpinKit.show($("#3"), {
-                size: 200
-            });
-
-            NotyKit.show({
-                title:"数据测试"
-                ,text:"sfsadfsadfsadfdsa"
-
-            });
             // noty({
             //     layout: 'center',
             //     type: 'information',
