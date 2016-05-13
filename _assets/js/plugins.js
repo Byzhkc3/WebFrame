@@ -39,23 +39,41 @@
             //alert(url);
         },
         complete: function () {
-            //moment.locale('zh-cn');
+            moment.locale('zh-cn');
 
-            // SpinKit.show($("#3"), {
-            //     size: 200
-            // });
-            //
-            // NotyKit.show({
-            //     title:"数据测试"
-            //
-            // });
+            SpinKit.show($("#3"), {
+                size: 200
+            });
 
-            $("input").on("input propertychange",function () {
-                var value = $(this).val();
-                if (value != "") {
-                    $(this).val("asfsad");
+            var thisNoty = NotyKit.show({
+                title: "数据测试"
+                , callback: {
+                    onClose: function (obj) {
+                        //alert(obj.id + "aaaaaaaaaaa");
+                    }
                 }
             });
+
+            var aaaa1 = NotyKit.show({
+                title: "数据aaa"
+                , text: "哈啥说哈是的是的发撒发撒旦法撒旦法打算发"
+                , closeItem: [{
+                    container: 'noty_text'//noty_message,noty_title,noty_text,noty_foot,notykit_content,notykit_container
+                    , closeWith: ['click']
+                    , text: '<span class="icon-remove" style="color:#ff0000;"></span>'//当 text 不为空时候下面配置生效
+                    , layout: 'center'
+                    , addClass: 'close'
+                }]
+                , callback: {
+                    onClose: function (obj) {
+                        //alert(obj.id);
+                    }
+                }
+
+            });
+
+            //NotyKit.close(thisNoty);
+
 
             $("#aaaa").html(moment().add(7, 'y').format('LLLL'));
             // noty({

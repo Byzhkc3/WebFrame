@@ -47,14 +47,14 @@
         if (typeof (obj) == "object" && obj != null && k != null) {
             for (var item in obj) {
                 if (v != null) {
-                    if (obj[item][k] === v || obj[item][k].is(v)) {
-                        return {index: item, item: obj[item]};
+                    if (obj[item][k] === v || (typeof (v) === "object" && obj[item][k].is(v))) {
+                        return {index: parseInt(item), item: obj[item]};
                         break;
                     }
                 }
                 else {
                     if (obj[item].hasOwnProperty(k)) {
-                        return {index: item, item: obj[item]};
+                        return {index: parseInt(item), item: obj[item]};
                         break;
                     }
                 }
@@ -130,6 +130,46 @@
 
     var template = '<div class="noty_message"><div class="noty_title"></div><div class="noty_text"></div><div class="noty_foot"></div></div>';
 
+    function init(options) {
+        var _options = NotyKitObj.options;
+        options = (typeof (options) == "object" && options != null) ? options : _options;
+        var _id = "notykit_" + (new Date().getTime() * Math.floor(Math.random() * 1000000));
+        var _container = options.obj ? options.obj : $('body');
+        var _width = options.width > 0 ? options.width : _options.width;
+        var _height = options.height > 0 ? options.height : _options.height;
+        var _background = (typeof (options.background) != "undefined" && options.background.indexOf("rgba(") != -1) ? options.background : _options.background;
+        var _shade = (typeof (options.shade) != "undefined" && !options.shade) ? false : _options.shade;
+        var _layout = (typeof (options.layout) != "undefined" && options.layout !== "") ? options.layout : _options.layout;
+        var _template = (typeof (options.template) != "undefined" && options.template !== "") ? options.template : _options.template;
+        var _title = (typeof (options.title) != "undefined" && options.title !== "") ? options.title : _options.title;
+        var _text = (typeof (options.text) != "undefined" && options.text !== "") ? options.text : _options.text;
+        var _closeItem = (typeof (options.closeItem) != "undefined" && typeof (options.closeItem) === "object") ? options.closeItem : _options.closeItem;
+        var _callback = (typeof (options.callback) != "undefined" && typeof (options.callback) === "object") ? options.callback : _options.callback;
+        var _buttons = (typeof (options.buttons) != "undefined" && typeof (options.buttons) === "object") ? options.buttons : _options.buttons;
+
+        var thisOptions = {};
+        thisOptions.id = _id;
+        thisOptions.obj = _container;
+        thisOptions.width = _width;
+        thisOptions.height = _height;
+        thisOptions.background = (!_shade) ? 'transparent' : _background;
+        thisOptions.shade = _shade;
+        thisOptions.layout = _layout;
+        thisOptions.template = _template;
+        thisOptions.title = _title;
+        thisOptions.text = _text;
+        thisOptions.closeItem = _closeItem;
+        thisOptions.callback = _callback;
+        thisOptions.buttons = _buttons;
+
+        notykitDate.push({
+            id: thisOptions.id
+            , notykit: thisOptions
+        });
+        return Object.create(NotyKitObj).build(thisOptions);
+    }
+
+
     var NotyKitObj = {
         options: {
             id: ""
@@ -145,7 +185,7 @@
             , closeItem: [{
                 container: 'noty_title'//noty_message,noty_title,noty_text,noty_foot,notykit_content,notykit_container
                 , closeWith: ['click']
-                , text: '关闭'//当 text 不为空时候下面配置生效
+                , text: '<span class="icon-remove"></span>'//当 text 不为空时候下面配置生效
                 , layout: 'centerright'
                 , addClass: 'close'
             }]
@@ -164,16 +204,16 @@
                 }
             }
             , buttons: [{
-                container:''//noty_message,noty_title,noty_text,noty_foot,notykit_content,notykit_container
-                ,addClass:''
-                ,closeWith:['click']
-                ,text:''
-                ,callback:{
-                    onButton:function (notykit) {
-                        
+                container: ''//noty_message,noty_title,noty_text,noty_foot,notykit_content,notykit_container
+                , addClass: ''
+                , closeWith: ['click']
+                , text: ''
+                , callback: {
+                    onButton: function (notykit) {
+
                     }
-                    ,afterButton:function (notykit) {
-                        
+                    , afterButton: function (notykit) {
+
                     }
                 }
             }]
@@ -194,90 +234,55 @@
             , maxVisible: 5
             , killer: false
         },
-        init: function (options) {
-            options = (typeof (options) == "object" && options != null) ? options : this.options;
-            var _id = "notykit_" + (new Date().getTime() * Math.floor(Math.random() * 1000000));
-            var _container = options.obj ? options.obj : $('body');
-            var _width = options.width > 0 ? options.width : this.options.width;
-            var _height = options.height > 0 ? options.height : this.options.height;
-            var _background = (typeof (options.background) != "undefined" && options.background.indexOf("rgba(") != -1) ? options.background : this.options.background;
-            var _shade = (typeof (options.shade) != "undefined" && !options.shade) ? false : this.options.shade;
-            var _layout = (typeof (options.layout) != "undefined" && options.layout !== "") ? options.layout : this.options.layout;
-            var _template = (typeof (options.template) != "undefined" && options.template !== "") ? options.template : this.options.template;
-            var _title = (typeof (options.title) != "undefined" && options.title !== "") ? options.title : this.options.title;
-            var _text = (typeof (options.text) != "undefined" && options.text !== "") ? options.text : this.options.text;
-            var _closeItem = (typeof (options.closeItem) != "undefined" && options.closeItem === "object") ? options.closeItem : this.options.closeItem;
-            var _callback = (typeof (options.callback) != "undefined" && options.callback === "object") ? options.callback : this.options.callback;
 
+        build: function (options) {
 
-            this.options.id = _id;
-            this.options.obj = _container;
-            this.options.width = _width;
-            this.options.height = _height;
-            this.options.background = (!_shade) ? 'transparent' : _background;
-            this.options.shade = _shade;
-            this.options.layout = _layout;
-            this.options.template = _template;
-            this.options.title = _title;
-            this.options.text = _text;
-            this.options.closeItem = _closeItem;
-            this.options.callback = _callback;
-
-
-            // var store = {};
-            // store[this.options.id] = this.options;
-            notykitDate.push({
-                id: this.options.id
-                , notykit: this.options
-            });
-
-            this.build();
-        },
-        build: function () {
-
-            var callbackObj = (typeof this.options.callback === "object" && this.options.callback != null) ? this.options.callback : null;
+            var callbackObj = (typeof options.callback === "object" && options.callback != null) ? options.callback : null;
             var onShowFn = (typeof callbackObj.onShow === "function") ? callbackObj.onShow : function () {
+
             };
             var afterShowFn = (typeof callbackObj.afterShow === "function") ? callbackObj.afterShow : function () {
+
             };
 
 
             if (typeof onShowFn === "function") {
-                onShowFn(this.options);
+                onShowFn(options);
             }
-
             var _html = $("<div class='notykit_container'><div class='notykit_content'></div></div>");
-            this.options.obj.append(_html.attr("id", this.options.id));
-            this.options.obj.find("#" + this.options.id + " .notykit_content").html(this.options.template);
-            this.options.obj.find("#" + this.options.id + " .noty_title").html(this.options.title);
-            this.options.obj.find("#" + this.options.id + " .noty_text").html(this.options.text);
+            options.obj.append(_html.attr("id", options.id));
+            options.obj.find("#" + options.id + " .notykit_content").html(options.template);
+            options.obj.find("#" + options.id + " .noty_title").html(options.title);
+            options.obj.find("#" + options.id + " .noty_text").html(options.text);
 
-            this.options.obj.find("#" + this.options.id).css({
+            options.obj.find("#" + options.id).css({
                 "position": "absolute"
                 , "z-index": getmaxZindex() + 1
-                , "background-color": this.options.background
+                , "background-color": options.background
             });
 
             //noty_message,noty_title,noty_text,noty_foot,notykit_content,notykit_container
-            this.options.obj.find("#" + this.options.id + " .notykit_content").css({
+            options.obj.find("#" + options.id + " .notykit_content").css({
                 "position": "relative"
             });
-            this.options.obj.find("#" + this.options.id + " .noty_message").css({
+            options.obj.find("#" + options.id + " .noty_message").css({
                 "position": "relative"
             });
-            this.options.obj.find("#" + this.options.id + " .noty_message > *").css({
+            options.obj.find("#" + options.id + " .noty_message > *").css({
                 "position": "relative"
             });
 
-            this.options.obj.find("#" + this.options.id + " .notykit_content").css({
-                "width": this.options.width + "px"
-                , "height": this.options.height + "px"
+            options.obj.find("#" + options.id + " .notykit_content").css({
+                "width": options.width + "px"
+                , "height": options.height + "px"
                 , "overflow": "hidden"
             });
 
-            this.resize_noty(this.options);
+            this.resize_noty(options);
             //添加关闭
-            this.addCloseEvent(this.options, this.options.closeItem);
+            this.addCloseEvent(options, options.closeItem);
+            //添加按钮
+            this.addBtnEvent(options, options.buttons);
 
             $(window).on("resize", function () {
                 $.each(notykitDate, function (index, item) {
@@ -286,13 +291,70 @@
             });
 
             if (typeof afterShowFn === "function") {
-                afterShowFn(this.options);
+                afterShowFn(options);
             }
+
+            return options;
         },
         addCloseEvent: function (notykit, closeItem) {
-            var obj = notykit.obj.find("#" + this.options.id);
+            var obj = notykit.obj.find("#" + notykit.id);
             if (obj.length > 0) {
                 $.each(closeItem, function (index, item) {
+                    var container = (typeof (item.container) != "undefined" && item.container !== "") ? item.container : "";
+                    container = container.toLowerCase() === "noty_message" ? "noty_message"
+                        : container.toLowerCase() === "noty_title" ? "noty_title"
+                        : container.toLowerCase() === "noty_text" ? "noty_text"
+                        : container.toLowerCase() === "noty_foot" ? "noty_foot"
+                        : container.toLowerCase() === "notykit_content" ? "notykit_content"
+                        : "notykit_container";
+
+                    var layout = (typeof (item.layout) != "undefined" && item.layout !== "") ? item.layout : "centerleft";
+                    var addClass = (typeof (item.addClass) != "undefined" && item.addClass !== "") ? item.addClass : "";
+                    var text = (typeof (item.text) != "undefined" && item.text !== "") ? item.text : "";
+                    var closeWith = (typeof (item.closeWith) != "undefined" && item.closeWith !== "") ?
+                        ((getJqueryEventString(item.closeWith) !== '') ? getJqueryEventString(item.closeWith) : ""
+                        ) : "";
+                    if (container != "" && closeWith != "") {
+                        var thisObj = obj.find("." + container);
+                        if (container === "notykit_container")
+                            thisObj = obj;
+                        if (text != "") {
+                            var closeTextObj = $("<div>" + text + "</div>");
+                            if (addClass != "") {
+                                closeTextObj.addClass(addClass);
+                            }
+                            closeTextObj.css({
+                                "position": "absolute"
+                            });
+
+                            thisObj.append(closeTextObj);
+
+                            NotyKitObj.resize_close(thisObj, layout, closeTextObj);
+
+                            $(window).on("resize", function () {
+                                NotyKitObj.resize_close(thisObj, layout, closeTextObj);
+                            });
+
+                            closeTextObj.off(closeWith);
+                            closeTextObj.on(closeWith, function () {
+                                NotyKitObj.close(notykit);
+                            });
+                        }
+                        else {
+                            thisObj.off(closeWith);
+                            thisObj.on(closeWith, function () {
+                                NotyKitObj.close(notykit);
+                            });
+                        }
+
+                    }
+                });
+            }
+        },
+        addBtnEvent: function (notykit, buttonsItem) {
+            var obj = notykit.obj.find("#" + notykit.id);
+            if (obj.length > 0) {
+                $.each(buttonsItem, function (index, item) {
                     var container = (typeof (item.container) != "undefined" && item.container !== "") ? item.container : "";
                     container = container.toLowerCase() === "noty_message" ? "noty_message"
                         : container.toLowerCase() === "noty_title" ? "noty_title"
@@ -436,7 +498,7 @@
                 var hasNotykitObj = getArrJsonItem(notykitDate, "id", id);
                 var hasNotykitIndex = hasNotykitObj.index;
                 if (hasNotykitIndex != -1) {
-                    notykitDate.splice(hasNotykitIndex);
+                    notykitDate.splice(hasNotykitIndex, hasNotykitIndex + 1);
                     obj.find("#" + id).remove();
                     if (typeof afterCloseFn === "function") {
                         afterCloseFn(notykit);
@@ -444,19 +506,24 @@
                 }
             }
         },
+        closeAll: function () {
+            $.each(notykitDate, function (index, item) {
+                NotyKitObj.close(item.notykit);
+            });
+        }
 
     }
 
     exports.show = function (options) {
-        Object.create(NotyKitObj).init(options);
+        return new init(options);
     };
 
-    exports.close=function (notykit) {
+    exports.close = function (notykit) {
         Object.create(NotyKitObj).close(notykit);
     };
 
-    exports.closeAll=function () {
-        //Object.create(NotyKitObj).close(notykit);
+    exports.closeAll = function () {
+        Object.create(NotyKitObj).closeAll();
     };
 
 }));

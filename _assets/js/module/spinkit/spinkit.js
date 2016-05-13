@@ -70,14 +70,14 @@
         if (typeof (obj) == "object" && obj != null && k != null) {
             for (var item in obj) {
                 if (v != null) {
-                    if (obj[item][k] === v || obj[item][k].is(v)) {
-                        return {index: item, item: obj[item]};
+                    if (obj[item][k] === v || (typeof (v) === "object" && obj[item][k].is(v))) {
+                        return {index: parseInt(item), item: obj[item]};
                         break;
                     }
                 }
                 else {
                     if (obj[item].hasOwnProperty(k)) {
-                        return {index: item, item: obj[item]};
+                        return {index: parseInt(item), item: obj[item]};
                         break;
                     }
                 }
@@ -219,7 +219,7 @@
         if (hasSpinnerIndex != -1) {
             var hasSpinnerObjID = hasSpinnerObj.item.id;
             _container.remove("#" + hasSpinnerObjID);
-            spinnerArr.splice(hasSpinnerIndex);
+            spinnerArr.splice(hasSpinnerIndex, hasSpinnerIndex + 1);
         }
         configs = (typeof (configs) == "object" && configs != null) ? configs : _default;
 
@@ -232,7 +232,8 @@
         var _hexColor = hex2Rgb(_color).match(/RGB\((\S*)\)/)[1];
         var _shade = (typeof (configs.shade) != "undefined" && !configs.shade) ? false : _default.shade;
 
-        spinnerArr.push({
+
+        var thisConfigs = {
             "obj": _container
             , "id": _id
             , "configs": {
@@ -243,7 +244,9 @@
                 , color: _color
                 , shade: _shade
             }
-        });
+        }
+
+        spinnerArr.push(thisConfigs);
 
         var _spinObj = (typeof (configs.spin) === "string" && configs.spin === "circle") ? getArrJsonItem(spinObj, "circle").item
             : (typeof (configs.spin) === "string" && configs.spin === "fading") ? getArrJsonItem(spinObj, "fading").item
@@ -321,6 +324,8 @@
         if (typeof (callback) === "function") {
             callback(get(_container));
         }
+
+        return thisConfigs;
     }
 
     function get(obj) {
@@ -1282,12 +1287,12 @@
     ];
 
     exports.show = function (obj, configs, callback) {
-        creatSpin(obj, configs, callback);
+        return creatSpin(obj, configs, callback);
     }
     exports.hidden = function (obj, callback) {
         var hasSpinnerObj = getArrJsonItem(spinnerArr, "obj", obj);
         if (hasSpinnerObj.index != -1) {
-            spinnerArr.splice(hasSpinnerObj.index);
+            spinnerArr.splice(hasSpinnerObj.index, hasSpinnerObj.index + 1);
             obj.find("#" + hasSpinnerObj.item.id).removeClass('animated fadeIn').addClass('animated fadeOut');
             setTimeout(function () {
                 obj.find("#" + hasSpinnerObj.item.id).remove();
