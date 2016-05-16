@@ -17,6 +17,7 @@
 
     var NotyKit = typeof exports !== 'undefined' ? exports : {};
 
+
     if (typeof Object.create !== 'function') {
         Object.create = function (o) {
             function F() {
@@ -64,7 +65,6 @@
     }
 
     function getObjPosition(obj, position, width, height) {
-
         var _top = (typeof (position) == "string" && (position).toLowerCase() == "top") ? 0
             : (typeof (position) == "string" && (position).toLowerCase() == "center") ? (obj.outerHeight() - height) / 2
             : (typeof (position) == "string" && (position).toLowerCase() == "bottom") ? obj.outerHeight() - height
@@ -94,7 +94,6 @@
             , left: _left
         };
     }
-
 
     function getJqueryEventString(arrayObj) {
         var s = "";
@@ -126,9 +125,22 @@
         return s;
     }
 
-    var notykitDate = [];
-
-    var template = '<div class="noty_message"><div class="noty_title"></div><div class="noty_text"></div><div class="noty_foot"></div></div>';
+    function setParentsStyle(obj, exprClass) {
+        parentsObj = obj.parents(exprClass);
+        parentObj = obj.parent();
+        parentsObj.find("*").each(function () {
+            if (!$(this).is(parentObj)) {
+                $(this).css({
+                    "position": "relative"
+                });
+            } else {
+                parentObj.css({
+                    "position": "relative"
+                });
+                return false;
+            }
+        });
+    }
 
     function init(options) {
         var _options = NotyKitObj.options;
@@ -141,11 +153,21 @@
         var _shade = (typeof (options.shade) != "undefined" && !options.shade) ? false : _options.shade;
         var _layout = (typeof (options.layout) != "undefined" && options.layout !== "") ? options.layout : _options.layout;
         var _template = (typeof (options.template) != "undefined" && options.template !== "") ? options.template : _options.template;
-        var _title = (typeof (options.title) != "undefined" && options.title !== "") ? options.title : _options.title;
-        var _text = (typeof (options.text) != "undefined" && options.text !== "") ? options.text : _options.text;
+        var _title = (typeof (options.title) != "undefined" && typeof (options.title) === "object") ? {
+            text: (typeof (options.title.text) != "undefined" && options.title.text !== "") ? options.title.text : _options.title.text,
+            container: (typeof (options.title.container) != "undefined" && options.title.container !== "") ? options.title.container : _options.title.container,
+            addClass: (typeof (options.title.addClass) != "undefined" && options.title.addClass !== "") ? options.title.addClass : _options.title.addClass
+        } : _options.title;
+
+        var _text = (typeof (options.text) != "undefined" && typeof (options.text) === "object") ? {
+            text: (typeof (options.text.text) != "undefined" && options.text.text !== "") ? options.text.text : _options.text.text,
+            container: (typeof (options.text.container) != "undefined" && options.text.container !== "") ? options.text.container : _options.text.container,
+            addClass: (typeof (options.text.addClass) != "undefined" && options.text.addClass !== "") ? options.text.addClass : _options.text.addClass
+        } : _options.text;
         var _closeItem = (typeof (options.closeItem) != "undefined" && typeof (options.closeItem) === "object") ? options.closeItem : _options.closeItem;
         var _callback = (typeof (options.callback) != "undefined" && typeof (options.callback) === "object") ? options.callback : _options.callback;
         var _buttons = (typeof (options.buttons) != "undefined" && typeof (options.buttons) === "object") ? options.buttons : _options.buttons;
+        var _theme = (typeof (options.theme) != "undefined" && options.theme !== "") ? options.theme : _options.theme;
 
         var thisOptions = {};
         thisOptions.id = _id;
@@ -161,14 +183,23 @@
         thisOptions.closeItem = _closeItem;
         thisOptions.callback = _callback;
         thisOptions.buttons = _buttons;
+        thisOptions.theme = _theme;
+
 
         notykitDate.push({
             id: thisOptions.id
             , notykit: thisOptions
         });
+
         return Object.create(NotyKitObj).build(thisOptions);
     }
 
+    var notykitDate = [];
+    var template = '<div class="noty_border">'
+        + '    <div class="noty_title"></div>'
+        + '    <div class="noty_text"></div>'
+        + '    <div class="noty_foot"></div>'
+        + '</div>';
 
     var NotyKitObj = {
         options: {
@@ -177,50 +208,53 @@
             , width: 600
             , height: 400
             , background: "rgba(0,0,0,.1)"
-            , shade: true
+            , shade: false
             , layout: 'center'
             , template: template
-            , title: ''
-            , text: 'sdafsafsdafds'
+            , title: {
+                container: '.noty_title'
+                , text: ''
+                , addClass: ''
+            }
+            , text: {
+                container: '.noty_text'
+                , text: ''
+                , addClass: ''
+            }
             , closeItem: [{
-                container: 'noty_title'//noty_message,noty_title,noty_text,noty_foot,notykit_content,notykit_container
+                container: '.notykit_content'//noty_border,noty_title,noty_text,noty_foot,notykit_content,notykit_container,或自定义容器
                 , closeWith: ['click']
                 , text: '<span class="icon-remove"></span>'//当 text 不为空时候下面配置生效
-                , layout: 'centerright'
+                , layout: 'topright'
                 , addClass: 'close'
             }]
             , callback: {
                 onShow: function (notykit) {
-
                 }
                 , afterShow: function (notykit) {
-
                 }
                 , onClose: function (notykit) {
-
                 }
                 , afterClose: function (notykit) {
-
                 }
             }
             , buttons: [{
-                container: ''//noty_message,noty_title,noty_text,noty_foot,notykit_content,notykit_container
+                container: '.noty_foot'//noty_foot,或自定义容器
                 , addClass: ''
-                , closeWith: ['click']
-                , text: ''
-                , callback: {
-                    onButton: function (notykit) {
-
-                    }
-                    , afterButton: function (notykit) {
-
-                    }
+                , btnWith: ['click']
+                , text: '确定'
+                , callback: function (notykit) {
+                }
+            }, {
+                container: '.noty_foot'//noty_foot,或自定义容器
+                , addClass: ''
+                , btnWith: ['click']
+                , text: '取消'
+                , callback: function (notykit) {
                 }
             }]
-
-            , theme: 'defaultTheme'
+            , theme: 'default.css'
             , type: 'alert'
-            , dismissQueue: true
             , animation: {
                 open: {height: 'toggle'},
                 close: {height: 'toggle'},
@@ -229,22 +263,13 @@
                 fadeSpeed: 'fast',
             }
             , timeout: false
-            , force: false
-            , modal: false
-            , maxVisible: 5
-            , killer: false
         },
-
         build: function (options) {
-
             var callbackObj = (typeof options.callback === "object" && options.callback != null) ? options.callback : null;
             var onShowFn = (typeof callbackObj.onShow === "function") ? callbackObj.onShow : function () {
-
             };
             var afterShowFn = (typeof callbackObj.afterShow === "function") ? callbackObj.afterShow : function () {
-
             };
-
 
             if (typeof onShowFn === "function") {
                 onShowFn(options);
@@ -252,37 +277,26 @@
             var _html = $("<div class='notykit_container'><div class='notykit_content'></div></div>");
             options.obj.append(_html.attr("id", options.id));
             options.obj.find("#" + options.id + " .notykit_content").html(options.template);
-            options.obj.find("#" + options.id + " .noty_title").html(options.title);
-            options.obj.find("#" + options.id + " .noty_text").html(options.text);
+
+            var titleObj = this.addTitle(options);
+            var textObj = this.addText(options);
+            var btnObj = this.addBtnEvent(options);
 
             options.obj.find("#" + options.id).css({
                 "position": "absolute"
                 , "z-index": getmaxZindex() + 1
                 , "background-color": options.background
             });
-
-            //noty_message,noty_title,noty_text,noty_foot,notykit_content,notykit_container
             options.obj.find("#" + options.id + " .notykit_content").css({
                 "position": "relative"
-            });
-            options.obj.find("#" + options.id + " .noty_message").css({
-                "position": "relative"
-            });
-            options.obj.find("#" + options.id + " .noty_message > *").css({
-                "position": "relative"
-            });
-
-            options.obj.find("#" + options.id + " .notykit_content").css({
-                "width": options.width + "px"
+                , "width": options.width + "px"
                 , "height": options.height + "px"
                 , "overflow": "hidden"
             });
 
             this.resize_noty(options);
             //添加关闭
-            this.addCloseEvent(options, options.closeItem);
-            //添加按钮
-            this.addBtnEvent(options, options.buttons);
+            var closeObj = this.addCloseEvent(options);
 
             $(window).on("resize", function () {
                 $.each(notykitDate, function (index, item) {
@@ -294,19 +308,215 @@
                 afterShowFn(options);
             }
 
-            return options;
+            return {
+                notyKitObj: options.obj.find("#" + options.id)
+                , notyKitConfig: options
+                , titleObj: titleObj
+                , textObj: textObj
+                , closeObj: closeObj
+                , btnObj: btnObj
+                , Close: function (callback) {
+                    Object.create(NotyKitObj).close(this.notyKitConfig);
+                    if (typeof callback === "function") {
+                        callback();
+                    }
+                }
+                , Show: function (callback) {
+                    this.notyKitObj.show();
+                    if (typeof callback === "function") {
+                        callback();
+                    }
+                }
+                , Hidden: function (callback) {
+                    this.notyKitObj.hide();
+                    if (typeof callback === "function") {
+                        callback();
+                    }
+                }
+                , AutoSize: function () {
+                    var width = 0;
+                    var height = 0;
+                    this.notyKitObj.find(".notykit_content > *").each(function () {
+                        if (width < $(this).outerWidth(true)) {
+                            width = $(this).outerWidth(true);
+                        }
+                    });
+                    this.notyKitObj.find(".notykit_content > *").each(function () {
+                        height += $(this).outerHeight(true);
+                    });
+
+                    this.notyKitConfig.width = width;
+                    this.notyKitConfig.height = height;
+
+                    if (width > 0) {
+                        this.notyKitConfig.width = width;
+                        this.notyKitObj.find(".notykit_content").css({
+                            width: width + "px"
+                        });
+                    }
+                    if (height > 0) {
+                        this.notyKitConfig.height = height;
+                        this.notyKitObj.find(".notykit_content").css({
+                            height: height + "px"
+                        });
+                    }
+                    Object.create(NotyKitObj).resize_noty(this.notyKitConfig);
+                    this.notyKitObj.find(".close" + this.notyKitConfig.id).remove();
+                    Object.create(NotyKitObj).addCloseEvent(this.notyKitConfig);
+                    $(window).on("resize", function () {
+                        NotyKitObj.resize_noty(this.notyKitConfig);
+                    });
+                }
+                , Resize: function (width, height) {
+                    if (width > 0) {
+                        this.notyKitConfig.width = width;
+                        this.notyKitObj.find(".notykit_content").css({
+                            width: width + "px"
+                        });
+                    }
+                    if (height > 0) {
+                        this.notyKitConfig.height = height;
+                        this.notyKitObj.find(".notykit_content").css({
+                            height: height + "px"
+                        });
+                    }
+                    Object.create(NotyKitObj).resize_noty(this.notyKitConfig);
+                    this.notyKitObj.find(".close" + this.notyKitConfig.id).remove();
+                    Object.create(NotyKitObj).addCloseEvent(this.notyKitConfig);
+                    $(window).on("resize", function () {
+                        NotyKitObj.resize_noty(this.notyKitConfig);
+                    });
+                }
+                , SetTitle: function (text) {
+                    this.notyKitObj.find(".notykit_content").css({
+                        width: "100%"
+                    });
+                    this.notyKitObj.find(".notykit_content").css({
+                        height: "100%"
+                    });
+                    this.titleObj.html(text);
+                    this.AutoSize();
+                }
+                , SetText: function (text) {
+                    this.notyKitObj.find(".notykit_content").css({
+                        width: "100%"
+                    });
+                    this.notyKitObj.find(".notykit_content").css({
+                        height: "100%"
+                    });
+                    this.textObj.html(text);
+                    this.AutoSize();
+                }
+                , SetClose: function (close) {
+                    close = (typeof (close) != "undefined" && typeof (close) === "object") ? close : NotyKitObj.options.closeItem;
+                    this.notyKitConfig.closeItem = close;
+                    this.notyKitObj.find(".notykit_content").css({
+                        width: "100%"
+                    });
+                    this.notyKitObj.find(".notykit_content").css({
+                        height: "100%"
+                    });
+                    Object.create(NotyKitObj).addCloseEvent(this.notyKitConfig);
+                    this.AutoSize();
+                }
+                , SetBtn: function (btn) {
+                    btn = (typeof (btn) != "undefined" && typeof (btn) === "object") ? btn : NotyKitObj.options.buttons;
+                    this.notyKitConfig.buttons = close;
+                    this.notyKitObj.find(".notykit_content").css({
+                        width: "100%"
+                    });
+                    this.notyKitObj.find(".notykit_content").css({
+                        height: "100%"
+                    });
+                    Object.create(NotyKitObj).addBtnEvent(this.notyKitConfig);
+                    this.AutoSize();
+                }
+            };
         },
-        addCloseEvent: function (notykit, closeItem) {
+        addTitle: function (notykit) {
             var obj = notykit.obj.find("#" + notykit.id);
+            var titleItem = notykit.title;
+            var titleObj = null;
+            if (obj.length > 0) {
+                var container = (typeof (titleItem.container) != "undefined" && titleItem.container !== "") ? titleItem.container : "";
+                container = container.toLowerCase() === "noty_border" ? ".noty_title"
+                    : container.toLowerCase() === "noty_title" ? ".noty_title"
+                    : container.toLowerCase() === "noty_text" ? ".noty_title"
+                    : container.toLowerCase() === "noty_foot" ? ".noty_title"
+                    : container.toLowerCase() === "notykit_content" ? ".noty_title"
+                    : container;//模版自定义容器
+
+                var text = (typeof (titleItem.text) != "undefined" && titleItem.text !== "") ? titleItem.text : "";
+                var addClass = (typeof (titleItem.addClass) != "undefined" && titleItem.addClass !== "") ? titleItem.addClass : "";
+                if (container !== "" && text !== "") {
+                    var thisObj = obj.find(container);
+                    if (!thisObj.is(".notykit_container")) {
+                        thisObj.css({
+                            "position": "relative"
+                        });
+                        setParentsStyle(thisObj, ".notykit_content");
+                    }
+
+                    if (thisObj.length > 0) {
+                        titleObj = $("<span class='title" + notykit.id + "'>" + text + "</span>");
+                        if (addClass != "") {
+                            titleObj.addClass(addClass);
+                        }
+                        thisObj.append(titleObj);
+                    }
+                }
+            }
+            return titleObj;
+        },
+        addText: function (notykit) {
+            var obj = notykit.obj.find("#" + notykit.id);
+            var textItem = notykit.text;
+            var textObj = null;
+            if (obj.length > 0) {
+                var container = (typeof (textItem.container) != "undefined" && textItem.container !== "") ? textItem.container : "";
+                container = container.toLowerCase() === "noty_border" ? ".noty_text"
+                    : container.toLowerCase() === "noty_title" ? ".noty_text"
+                    : container.toLowerCase() === "noty_text" ? ".noty_text"
+                    : container.toLowerCase() === "noty_foot" ? ".noty_text"
+                    : container.toLowerCase() === "notykit_content" ? ".noty_text"
+                    : container;//模版自定义容器
+
+                var text = (typeof (textItem.text) != "undefined" && textItem.text !== "") ? textItem.text : "";
+                var addClass = (typeof (textItem.addClass) != "undefined" && textItem.addClass !== "") ? textItem.addClass : "";
+                if (container !== "" && text !== "") {
+                    var thisObj = obj.find(container);
+                    if (!thisObj.is(".notykit_container")) {
+                        thisObj.css({
+                            "position": "relative"
+                        });
+                        setParentsStyle(thisObj, ".notykit_content");
+                    }
+                    if (thisObj.length > 0) {
+                        textObj = $("<span class='text" + notykit.id + "'>" + text + "</span>");
+                        if (addClass != "") {
+                            textObj.addClass(addClass);
+                        }
+                        thisObj.append(textObj);
+                    }
+                }
+            }
+            return textObj;
+        },
+        addCloseEvent: function (notykit) {
+            var obj = notykit.obj.find("#" + notykit.id);
+            var closeItem = notykit.closeItem;
+            notykit.obj.find(".close" + notykit.id).remove();
+            var closeObj = null;
             if (obj.length > 0) {
                 $.each(closeItem, function (index, item) {
                     var container = (typeof (item.container) != "undefined" && item.container !== "") ? item.container : "";
-                    container = container.toLowerCase() === "noty_message" ? "noty_message"
-                        : container.toLowerCase() === "noty_title" ? "noty_title"
-                        : container.toLowerCase() === "noty_text" ? "noty_text"
-                        : container.toLowerCase() === "noty_foot" ? "noty_foot"
-                        : container.toLowerCase() === "notykit_content" ? "notykit_content"
-                        : "notykit_container";
+                    container = container.toLowerCase() === "noty_border" ? ".noty_border"
+                        : container.toLowerCase() === "noty_title" ? ".noty_title"
+                        : container.toLowerCase() === "noty_text" ? ".noty_text"
+                        : container.toLowerCase() === "noty_foot" ? ".noty_foot"
+                        : container.toLowerCase() === "notykit_content" ? ".notykit_content"
+                        : container.toLowerCase() === "notykit_container" ? ".notykit_container"
+                        : container;
 
                     var layout = (typeof (item.layout) != "undefined" && item.layout !== "") ? item.layout : "centerleft";
                     var addClass = (typeof (item.addClass) != "undefined" && item.addClass !== "") ? item.addClass : "";
@@ -315,16 +525,23 @@
                         ((getJqueryEventString(item.closeWith) !== '') ? getJqueryEventString(item.closeWith) : ""
                         ) : "";
                     if (container != "" && closeWith != "") {
-                        var thisObj = obj.find("." + container);
-                        if (container === "notykit_container")
+                        var thisObj = obj.find(container);
+                        if (container === ".notykit_container")
                             thisObj = obj;
+                        if (!thisObj.is(".notykit_container")) {
+                            thisObj.css({
+                                "position": "relative"
+                            });
+                            setParentsStyle(thisObj, ".notykit_content");
+                        }
                         if (text != "") {
-                            var closeTextObj = $("<div>" + text + "</div>");
+                            var closeTextObj = $("<div class='close" + notykit.id + "'>" + text + "</div>");
                             if (addClass != "") {
                                 closeTextObj.addClass(addClass);
                             }
                             closeTextObj.css({
                                 "position": "absolute"
+                                , "z-index": getmaxZindex() + 1
                             });
 
                             thisObj.append(closeTextObj);
@@ -346,66 +563,58 @@
                                 NotyKitObj.close(notykit);
                             });
                         }
-
                     }
                 });
+                closeObj = obj.find(".close" + notykit.id);
             }
+            return closeObj;
         },
-        addBtnEvent: function (notykit, buttonsItem) {
+        addBtnEvent: function (notykit) {
             var obj = notykit.obj.find("#" + notykit.id);
+            var buttonsItem = notykit.buttons;
+            notykit.obj.find(".btn" + notykit.id).remove();
+            var btnObj = null;
             if (obj.length > 0) {
                 $.each(buttonsItem, function (index, item) {
                     var container = (typeof (item.container) != "undefined" && item.container !== "") ? item.container : "";
-                    container = container.toLowerCase() === "noty_message" ? "noty_message"
-                        : container.toLowerCase() === "noty_title" ? "noty_title"
-                        : container.toLowerCase() === "noty_text" ? "noty_text"
-                        : container.toLowerCase() === "noty_foot" ? "noty_foot"
-                        : container.toLowerCase() === "notykit_content" ? "notykit_content"
-                        : "notykit_container";
+                    container = container.toLowerCase() === "noty_border" ? ".noty_foot"
+                        : container.toLowerCase() === "noty_title" ? ".noty_foot"
+                        : container.toLowerCase() === "noty_text" ? ".noty_foot"
+                        : container.toLowerCase() === "noty_foot" ? ".noty_foot"
+                        : container.toLowerCase() === "notykit_content" ? ".noty_foot"
+                        : container;//模版自定义容器
 
-                    var layout = (typeof (item.layout) != "undefined" && item.layout !== "") ? item.layout : "centerleft";
                     var addClass = (typeof (item.addClass) != "undefined" && item.addClass !== "") ? item.addClass : "";
                     var text = (typeof (item.text) != "undefined" && item.text !== "") ? item.text : "";
-                    var closeWith = (typeof (item.closeWith) != "undefined" && item.closeWith !== "") ?
-                        ((getJqueryEventString(item.closeWith) !== '') ? getJqueryEventString(item.closeWith) : ""
-                        ) : "";
-                    if (container != "" && closeWith != "") {
-                        var thisObj = obj.find("." + container);
-                        if (container === "notykit_container")
-                            thisObj = obj;
+                    var btnWith = (typeof (item.btnWith) != "undefined" && item.btnWith !== "") ?
+                        ((getJqueryEventString(item.btnWith) !== '') ? getJqueryEventString(item.btnWith) : "click"
+                        ) : "click";
+                    var btnCallback = (typeof (item.callback) === "function") ? item.callback : "";
 
-                        if (text != "") {
-                            var closeTextObj = $("<div>" + text + "</div>");
+                    if (container != "" && text != "") {
+                        var thisObj = obj.find(container);
+                        if (!thisObj.is(".notykit_container")) {
+                            thisObj.css({
+                                "position": "relative"
+                            });
+                            setParentsStyle(thisObj, ".notykit_content");
+                        }
+                        if (thisObj.length > 0) {
+                            var btnObj = $("<span class='btn" + notykit.id + "'>" + text + "</span>");
                             if (addClass != "") {
-                                closeTextObj.addClass(addClass);
+                                btnObj.addClass(addClass);
                             }
-                            closeTextObj.css({
-                                "position": "absolute"
-                            });
-
-                            thisObj.append(closeTextObj);
-
-                            NotyKitObj.resize_close(thisObj, layout, closeTextObj);
-
-                            $(window).on("resize", function () {
-                                NotyKitObj.resize_close(thisObj, layout, closeTextObj);
-                            });
-
-                            closeTextObj.off(closeWith);
-                            closeTextObj.on(closeWith, function () {
-                                NotyKitObj.close(notykit);
+                            thisObj.append(btnObj);
+                            btnObj.off(btnWith);
+                            btnObj.on(btnWith, function () {
+                                btnCallback(notykit);
                             });
                         }
-                        else {
-                            thisObj.off(closeWith);
-                            thisObj.on(closeWith, function () {
-                                NotyKitObj.close(notykit);
-                            });
-                        }
-
                     }
                 });
+                btnObj = obj.find(".btn" + notykit.id);
             }
+            return btnObj;
         },
         resize_close: function (appendObj, layout, closeObj) {
             var thisPosition = getObjPosition(appendObj, layout, closeObj.outerWidth(), closeObj.outerHeight());
@@ -506,24 +715,31 @@
                 }
             }
         },
-        closeAll: function () {
+        destroy: function (notykit) {
+            var id = notykit.id;
+            var obj = notykit.obj;
+            if (obj.length > 0) {
+                var hasNotykitObj = getArrJsonItem(notykitDate, "id", id);
+                var hasNotykitIndex = hasNotykitObj.index;
+                if (hasNotykitIndex != -1) {
+                    notykitDate.splice(hasNotykitIndex, hasNotykitIndex + 1);
+                    obj.find("#" + id).remove();
+                }
+            }
+        },
+        destroyAll: function () {
             $.each(notykitDate, function (index, item) {
-                NotyKitObj.close(item.notykit);
+                NotyKitObj.destroy(item.notykit);
             });
         }
-
     }
 
-    exports.show = function (options) {
+    exports.Create = function (options) {
         return new init(options);
     };
 
-    exports.close = function (notykit) {
-        Object.create(NotyKitObj).close(notykit);
-    };
-
-    exports.closeAll = function () {
-        Object.create(NotyKitObj).closeAll();
+    exports.Destroy = function () {
+        Object.create(NotyKitObj).destroyAll();
     };
 
 }));
