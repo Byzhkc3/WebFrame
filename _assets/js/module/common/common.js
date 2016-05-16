@@ -264,7 +264,7 @@
          * @obj:指定对象,默认为$('body *')
          * @max:设置最大值
          * */
-        getmaxZindex: function (obj,max) {
+        getmaxZindex: function (obj, max) {
             obj = (typeof (obj) == "object" && obj.length > 0) ? obj.find("*") : $('body *');
             max = max > 0 ? max + 1 : -1;
             var maxZ = Math.max.apply(null, $.map(obj, function (e, n) {
@@ -433,14 +433,12 @@
          * 判断是否为有效的金额
          * @money:金额值
          * @n:金额小数位数,默认为2位,最多20位
-         * @l:金额最大的长度,默认为20位
          * @return{bool}
          * */
-        isMoney: function (money, n, l) {
+        isMoney: function (money, n) {
             n = n > 0 && n <= 20 ? n : 2;
-            l = l > 0 && l <= 20 ? l : 9;
-            var exp = eval("/^([1-9][\d]{0," + l + "}|0)(\.[\d]{1," + n + "})?$/");
-            if (exp.test(money)) {
+            var re = new RegExp('^(([1-9][0-9]*)|(([0]\\.\\d{1,' + n + '}|[1-9][0-9]*\\.\\d{1,' + n + '})))$');
+            if (re.test(money)) {
                 return true;
             }
             else {

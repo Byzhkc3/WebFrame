@@ -185,7 +185,6 @@
         thisOptions.buttons = _buttons;
         thisOptions.theme = _theme;
 
-
         notykitDate.push({
             id: thisOptions.id
             , notykit: thisOptions
