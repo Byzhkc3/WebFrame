@@ -65,6 +65,8 @@
     }
 
     function getArrJsonItem(obj, key, value) {
+        obj = (isArray(obj) && obj.length > 0) ? obj
+            : (!isArray(obj)) ? obj : null;
         var k = (typeof (key) == "string" && key != "") ? key : null;
         var v = (typeof (value) != "undefined") ? value : null;
         if (typeof (obj) == "object" && obj != null && k != null) {
@@ -163,16 +165,16 @@
             }
             else {
                 var _width = obj.is($('body')) ?
-                    ((($(window).width() > obj.outerWidth() ? $(window).width() : obj.outerWidth()) > options.width)
+                    ((($(window).width() > obj.outerWidth() ? $(window).width() : obj.outerWidth()) > options.size)
                         ? ($(window).width() > obj.outerWidth() ? $(window).width() : obj.outerWidth())
-                        : (options.width))
-                    : (obj.outerWidth() > options.width ? obj.outerWidth() : options.width);
+                        : (options.size))
+                    : (obj.outerWidth() > options.size ? obj.outerWidth() : options.size);
 
                 var _height = obj.is($('body')) ?
-                    ((($(window).height() > obj.outerHeight() ? $(window).height() : obj.outerHeight()) > options.height)
+                    ((($(window).height() > obj.outerHeight() ? $(window).height() : obj.outerHeight()) > options.size)
                         ? ($(window).height() > obj.outerHeight() ? $(window).height() : obj.outerHeight())
-                        : (options.height))
-                    : (obj.outerHeight() > options.height ? obj.outerHeight() : options.height);
+                        : (options.size))
+                    : (obj.outerHeight() > options.size ? obj.outerHeight() : options.size);
 
                 obj.find("#" + _id).css({
                     width: _width + "px"

@@ -27,7 +27,7 @@
     Modernizr.load([{
         load: {
             'jquery': '_assets/js/public/jquery/jquery-1.12.3.min.js'//jquery
-            , 'lodash': '_assets/js/public/lodash/lodash-4.11.2.min.js'//基础库
+            , 'lodash': '_assets/js/public/underscore/underscore.js'//基础库
             , 'html5media': '_assets/js/public/html5media/html5media-1.1.8.min.js'//多媒体
             , 'moment': '_assets/js/public/moment/moment-local-2.1.3.min.js'//日期
             , 'validator': '_assets/js/public/validator/validator-5.2.0.min.js'//验证
@@ -68,6 +68,8 @@
                     }
                 }
             });
+
+            common.fn.getInputMoney(32423423.9870,2);
 
 
             // var thisNoty = NotyKit.Create({

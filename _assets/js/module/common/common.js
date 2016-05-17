@@ -1,6 +1,6 @@
 ﻿/**
  * Created by xuesong on 16/1/25.
- * 文件必须依赖lodash或underscore工具库
+ * 文件必须依赖underscore工具库
  */
 "use strict";
 (function (factory) {
@@ -346,6 +346,8 @@
          * @return:{index,item}
          * */
         getArrJsonItem: function (obj, key, value) {
+            obj = (isArray(obj) && obj.length > 0) ? obj
+                : (!isArray(obj)) ? obj : null;
             var k = (typeof (key) == "string" && key != "") ? key : null;
             var v = (typeof (value) != "undefined") ? value : null;
             if (typeof (obj) == "object" && obj != null && k != null) {
@@ -365,7 +367,33 @@
                 }
             }
             return {index: -1, item: null};
-        }
+        },
+        getInputMoney: function (money, n) {
+            money = money.toString();
+            n = parseInt(n) > 0 && parseInt(n) <= 20 ? parseInt(n) : 2;
+            var newMoney = '';
+            if (!_.isEmpty(money)) {
+                if (money.indexOf(".") != -1) {
+                    var temp = money.substr(money.indexOf("."));
+                    if (temp.length > (n + 1)) {
+                        temp = money.substr(0, money.indexOf(".") + (n + 1));
+                    }
+                    else {
+                        temp = money;
+                    }
+                    newMoney = temp;
+                }
+                else {
+                    newMoney = money;
+                }
+            }
+            if (exports.is.isMoney(newMoney, n)) {
+                return newMoney;
+            }
+            else {
+                return ""
+            }
+        },
 
 
     }
@@ -445,6 +473,14 @@
                 return false;
             }
         },
+        /*
+         * 判断是否为数组
+         * @obj:对象
+         * @return{bool}
+         * */
+        isArray:function (obj) {
+            return Object.prototype.toString.call(obj) === '[object Array]';
+        }
     }
 
 }));
