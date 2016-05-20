@@ -95,7 +95,7 @@
             // },3000);
 
             aaaa1.AutoSize();
-            // aaaa1.SetText("哈啥说哈是的是的发撒发撒旦法撒旦法打算发哈啥说<br/><br/>哈是的是的发撒发撒旦法撒旦法打算发哈啥说<br/><br/>哈是的是的发撒发撒旦法撒旦法打算发哈啥说<br/>哈是的<br/>是的发撒发撒旦法撒旦法打算发");
+            aaaa1.SetText("哈啥说哈是的是的发撒发撒旦法撒旦法打算发哈啥说<br/><br/>哈是的是的发撒发撒旦法撒旦法打算发哈啥说<br/><br/>哈是的是的发撒发撒旦法撒旦法打算发哈啥说<br/>哈是的<br/>是的发撒发撒旦法撒旦法打算发");
             //
             // aaaa1.SetClose([{
             //     container: '.notykit_container'//noty_border,noty_title,noty_text,noty_foot,notykit_content,notykit_container,或自定义容器
