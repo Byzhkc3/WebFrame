@@ -94,7 +94,7 @@
             , left: _left
         };
     }
-
+    
     function getJqueryEventString(arrayObj) {
         var s = "";
         $.each(arrayObj, function (index, item) {

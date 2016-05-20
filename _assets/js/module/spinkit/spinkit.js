@@ -64,6 +64,10 @@
         }
     }
 
+    function isArray(obj) {
+        return Object.prototype.toString.call(obj) === '[object Array]';
+    }
+
     function getArrJsonItem(obj, key, value) {
         obj = (isArray(obj) && obj.length > 0) ? obj
             : (!isArray(obj)) ? obj : null;
