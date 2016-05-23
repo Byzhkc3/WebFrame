@@ -207,7 +207,7 @@
             , width: 600
             , height: 400
             , background: "rgba(0,0,0,.1)"
-            , shade: false
+            , shade: true
             , layout: 'center'
             , template: template
             , title: {
