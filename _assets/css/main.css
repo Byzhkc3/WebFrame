@@ -271,3 +271,17 @@ textarea {
         page-break-after: avoid;
     }
 }
+.tabsClass{
+    border: 1px solid #ccc;
+    background-color: #00A600;
+    padding: 5px 20px;
+    margin: 0px 10px 0px -11px;
+    cursor: pointer;
+}
+.activeTabs{
+    border: 1px solid #ccc;
+    background-color: #cd1c1b;
+    padding: 5px 20px;
+    margin: 0px 10px 0px -11px;
+    cursor: pointer;
+}
