@@ -394,22 +394,17 @@
                     if (typeof (obj[item]) === 'object' && obj[item] != null) {
                         if (v != null) {
                             if (obj[item][k] === v || (typeof (v) === "object" && obj[item][k].is(v))) {
-                                delete obj[item];
+                                obj.splice(obj.indexOf(item),1);
                                 break;
                             }
                         }
                         else {
                             if (obj[item].hasOwnProperty(k)) {
-                                delete obj[item];
+                                obj.splice(obj.indexOf(item),1);
                                 break;
                             }
                         }
                     }
-                }
-            }
-            if(typeof (obj)==='object' && obj!=null){
-                if(JSON.stringify(obj)==='[null]'){
-                    obj=null;
                 }
             }
             return obj;
