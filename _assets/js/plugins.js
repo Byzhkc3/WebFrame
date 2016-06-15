@@ -58,6 +58,7 @@
             , 'validator': rootpath + '_assets/js/public/validator/validator-5.2.0.min.js'//验证
             , 'common': rootpath + '_assets/js/module/common/common.js'//加载通用函数
             , 'noty': rootpath + '_assets/js/module/notykit/notykit.js'//对话框
+            , 'basil': rootpath + '_assets/js/public/basil/basil.js'//数据统一储存
             , 'dataload': rootpath + '_assets/js/module/dataload/dataload.js'//数据请求
             , 'tabskit': rootpath + '_assets/js/module/tabskit/tabskit.js'//TAB
             , 'seajs': rootpath + '_assets/js/frame/seajs/sea.js'//
