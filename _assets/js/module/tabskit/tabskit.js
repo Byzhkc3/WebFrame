@@ -594,7 +594,6 @@
     }
 
     function init(config) {
-        clearstorage();
         var _config = tabsObj.default;
         config = (typeof (config) == "object" && config != null) ? config : _config;
         var initIdFlg = (typeof config.id === 'string' && config.id !== '') ? true : false;
