@@ -77,6 +77,9 @@
             : (typeof (position) == "string" && (position).toLowerCase() == "topright") ? 0
             : (typeof (position) == "string" && (position).toLowerCase() == "centerright") ? (obj.outerHeight() - height) / 2
             : (typeof (position) == "string" && (position).toLowerCase() == "bottomright") ? obj.outerHeight() - height
+            : (typeof (position) == "string" && (position).toLowerCase() == "windowscenter") ? $(document).scrollTop() + ($(window).height() - height) / 2
+            : (typeof (position) == "string" && (position).toLowerCase() == "windowsleft") ? $(document).scrollTop() + ($(window).height() - height) / 2
+            : (typeof (position) == "string" && (position).toLowerCase() == "windowsright") ? $(document).scrollTop() + ($(window).height() - height) / 2
             : (typeof (position) == "object" && position != null) ? (position.top > 0 ? position.top : 0)
             : (obj.outerHeight() - height) / 2;
 
@@ -89,6 +92,9 @@
             : (typeof (position) == "string" && (position).toLowerCase() == "topright") ? obj.outerWidth() - width
             : (typeof (position) == "string" && (position).toLowerCase() == "centerright") ? obj.outerWidth() - width
             : (typeof (position) == "string" && (position).toLowerCase() == "bottomright") ? obj.outerWidth() - width
+            : (typeof (position) == "string" && (position).toLowerCase() == "windowscenter") ? $(document).scrollLeft() + (obj.outerWidth() - width) / 2
+            : (typeof (position) == "string" && (position).toLowerCase() == "windowsleft") ? $(document).scrollLeft()
+            : (typeof (position) == "string" && (position).toLowerCase() == "windowsright") ? $(document).scrollLeft() + $(window).width() - width
             : (typeof (position) == "object" && position != null) ? (position.left > 0 ? position.left : 0)
             : (obj.outerWidth() - width) / 2;
 
@@ -280,7 +286,7 @@
                 onShowFn(options);
             }
             var _html = $("<div class='notykit_container'><div class='notykit_content'></div></div>");
-            $('body').append(_html.attr("id", options.id));
+            $('body>:first').before(_html.attr("id", options.id));
             $("#" + options.id + " .notykit_content").html(options.template);
 
             var titleObj = this.addTitle(options);
@@ -731,6 +737,9 @@
                         afterCloseFn(notykit);
                     }
                 }
+                else {
+                    obj.remove();
+                }
             }
         },
         destroy: function (notykit) {
@@ -743,12 +752,16 @@
                     notykitDate.splice(hasNotykitIndex, hasNotykitIndex + 1);
                     obj.remove();
                 }
+                else {
+                    obj.remove();
+                }
             }
         },
         destroyAll: function () {
             $.each(notykitDate, function (index, item) {
                 NotyKitObj.destroy(item.notykit);
             });
+            notykitDate = [];
         }
     }
 
