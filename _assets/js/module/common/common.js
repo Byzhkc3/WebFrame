@@ -154,6 +154,9 @@
             }
             return o.toString();
         },
+        removeHtml: function (html) {
+            return $("<p>" + html + "</p>").text();
+        }
     }
 
     //格式化
@@ -337,7 +340,7 @@
          生成数据链接
          */
         createObjectURL: function (blob) {
-            if(blob){
+            if (blob) {
                 return window[window.webkitURL ? 'webkitURL' : 'URL']['createObjectURL'](blob);
                 this.resolveObjectURL(blob);
             }
@@ -460,6 +463,9 @@
             }
             return obj;
         },
+        /*
+         * 获取金额
+         * */
         getInputMoney: function (money, n) {
             money = money.toString();
             n = parseInt(n) > 0 && parseInt(n) <= 20 ? parseInt(n) : 2;
@@ -486,14 +492,64 @@
                 return ""
             }
         },
-        uuid:function () {
-            return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-                var r = Math.random()*16|0, v = c == 'x' ? r : (r&0x3|0x8);
+        uuid: function () {
+            return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+                var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
                 return v.toString(16);
             });
+        },
+        /*
+         * Html 编码
+         * */
+        htmlEncode: function (html) {
+            var temp = document.createElement("div");
+            (temp.textContent != null) ? (temp.textContent = html) : (temp.innerText = html);
+            var output = temp.innerHTML;
+            temp = null;
+            return output;
+        },
+        /*
+         * Html 解码
+         * */
+        htmlDecode: function (text) {
+            var temp = document.createElement("div");
+            temp.innerHTML = text;
+            var output = temp.innerText || temp.textContent;
+            temp = null;
+            return output;
+        },
+        /*
+         * 添加 input 文本输入框回车事件
+         * @container:指定 input所在对象
+         * @isTab:是否为回车代替 tab 切换事件,默认为 true
+         * @callback:回车后的事件或最好一个输入框回车事件
+         * */
+        inputEnter: function (container, isTab, callback) {
+            container = typeof container === 'string' ? $(container) : container;
+            isTab = typeof isTab === 'boolean' ? isTab : true;//默认设置为Tab切换
+            container.find("input[type!='hidden']").keypress(function (event) {
+                if (event.keyCode == 13) {// 判断所按是否回车键
+                    if (!isTab) {
+                        if (typeof callback === 'function') {
+                            callback();
+                        }
+                    }
+                    else {
+                        var inputs = container.find("input[type!='hidden']"); // 获取表单中的所有输入框
+                        var idx = inputs.index(this); // 获取当前焦点输入框所处的位置
+                        if (idx == inputs.length - 1) {// 判断是否是最后一个输入框
+                            if (typeof callback === 'function') {
+                                callback();
+                            }
+                        } else {
+                            inputs[idx + 1].focus(); // 设置焦点
+                            inputs[idx + 1].select(); // 选中文字
+                        }
+                        return false;// 取消默认的提交行为
+                    }
+                }
+            });
         }
-
-
     }
 
     //转化
@@ -578,6 +634,17 @@
          * */
         isArray: function (obj) {
             return Object.prototype.toString.call(obj) === '[object Array]';
+        },
+        /*
+         * 判断字符串是否有汉字
+         * @ str:字符串
+         * @return{bool}
+         * */
+        isContainCN: function (str) {
+            if (/.*[\u4e00-\u9fa5]+.*$/.test(str)) {
+                return true;
+            }
+            return false;
         }
     }
 
