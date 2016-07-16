@@ -712,7 +712,7 @@
             }
         },
         close: function (notykit, clearDate) {
-            clearDate = (typeof clearDate === 'boolean' && boolean === false) ? false : true;
+            clearDate = (typeof clearDate === 'boolean' && clearDate === false) ? false : true;
             var id = notykit.id;
             var obj = $("#" + notykit.id);
             var callbackObj = (typeof notykit.callback === "object" && notykit.callback != null) ? notykit.callback : null;
