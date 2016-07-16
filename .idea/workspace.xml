@@ -1,19 +1,114 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="41a8b54c-0f03-4103-b538-36bbb69b1a54" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.vs/github/v14/.suo" afterPath="$PROJECT_DIR$/.vs/github/v14/.suo" />
+    <list default="true" id="41a8b54c-0f03-4103-b538-36bbb69b1a54" name="Default" comment="init">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_assets/js/module/imginput/imginput.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_assets/js/module/notykit/notykit.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_assets/js/public/datepicker/bootstrap/css/bootstrap-datepicker.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_assets/js/public/datepicker/bootstrap/css/bootstrap-datepicker.css.map" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_assets/js/public/datepicker/bootstrap/css/bootstrap-datepicker.min.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_assets/js/public/datepicker/bootstrap/css/bootstrap-datepicker.min.css.map" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_assets/js/public/datepicker/bootstrap/css/bootstrap-datepicker.standalone.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_assets/js/public/datepicker/bootstrap/css/bootstrap-datepicker.standalone.css.map" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_assets/js/public/datepicker/bootstrap/css/bootstrap-datepicker.standalone.min.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_assets/js/public/datepicker/bootstrap/css/bootstrap-datepicker.standalone.min.css.map" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_assets/js/public/datepicker/bootstrap/css/bootstrap-datepicker3.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_assets/js/public/datepicker/bootstrap/css/bootstrap-datepicker3.css.map" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_assets/js/public/datepicker/bootstrap/css/bootstrap-datepicker3.min.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_assets/js/public/datepicker/bootstrap/css/bootstrap-datepicker3.min.css.map" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_assets/js/public/datepicker/bootstrap/css/bootstrap-datepicker3.standalone.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_assets/js/public/datepicker/bootstrap/css/bootstrap-datepicker3.standalone.css.map" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_assets/js/public/datepicker/bootstrap/css/bootstrap-datepicker3.standalone.min.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_assets/js/public/datepicker/bootstrap/css/bootstrap-datepicker3.standalone.min.css.map" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_assets/js/public/datepicker/bootstrap/js/bootstrap-datepicker.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_assets/js/public/datepicker/bootstrap/js/bootstrap-datepicker.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_assets/js/public/datepicker/bootstrap/locales/bootstrap-datepicker.ar.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_assets/js/public/datepicker/bootstrap/locales/bootstrap-datepicker.az.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_assets/js/public/datepicker/bootstrap/locales/bootstrap-datepicker.bg.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_assets/js/public/datepicker/bootstrap/locales/bootstrap-datepicker.bs.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_assets/js/public/datepicker/bootstrap/locales/bootstrap-datepicker.ca.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_assets/js/public/datepicker/bootstrap/locales/bootstrap-datepicker.cs.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_assets/js/public/datepicker/bootstrap/locales/bootstrap-datepicker.cy.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_assets/js/public/datepicker/bootstrap/locales/bootstrap-datepicker.da.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_assets/js/public/datepicker/bootstrap/locales/bootstrap-datepicker.de.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_assets/js/public/datepicker/bootstrap/locales/bootstrap-datepicker.el.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_assets/js/public/datepicker/bootstrap/locales/bootstrap-datepicker.en-AU.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_assets/js/public/datepicker/bootstrap/locales/bootstrap-datepicker.en-GB.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_assets/js/public/datepicker/bootstrap/locales/bootstrap-datepicker.eo.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_assets/js/public/datepicker/bootstrap/locales/bootstrap-datepicker.es.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_assets/js/public/datepicker/bootstrap/locales/bootstrap-datepicker.et.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_assets/js/public/datepicker/bootstrap/locales/bootstrap-datepicker.eu.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_assets/js/public/datepicker/bootstrap/locales/bootstrap-datepicker.fa.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_assets/js/public/datepicker/bootstrap/locales/bootstrap-datepicker.fi.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_assets/js/public/datepicker/bootstrap/locales/bootstrap-datepicker.fo.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_assets/js/public/datepicker/bootstrap/locales/bootstrap-datepicker.fr-CH.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_assets/js/public/datepicker/bootstrap/locales/bootstrap-datepicker.fr.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_assets/js/public/datepicker/bootstrap/locales/bootstrap-datepicker.gl.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_assets/js/public/datepicker/bootstrap/locales/bootstrap-datepicker.he.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_assets/js/public/datepicker/bootstrap/locales/bootstrap-datepicker.hr.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_assets/js/public/datepicker/bootstrap/locales/bootstrap-datepicker.hu.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_assets/js/public/datepicker/bootstrap/locales/bootstrap-datepicker.hy.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_assets/js/public/datepicker/bootstrap/locales/bootstrap-datepicker.id.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_assets/js/public/datepicker/bootstrap/locales/bootstrap-datepicker.is.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_assets/js/public/datepicker/bootstrap/locales/bootstrap-datepicker.it-CH.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_assets/js/public/datepicker/bootstrap/locales/bootstrap-datepicker.it.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_assets/js/public/datepicker/bootstrap/locales/bootstrap-datepicker.ja.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_assets/js/public/datepicker/bootstrap/locales/bootstrap-datepicker.ka.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_assets/js/public/datepicker/bootstrap/locales/bootstrap-datepicker.kh.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_assets/js/public/datepicker/bootstrap/locales/bootstrap-datepicker.kk.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_assets/js/public/datepicker/bootstrap/locales/bootstrap-datepicker.ko.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_assets/js/public/datepicker/bootstrap/locales/bootstrap-datepicker.kr.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_assets/js/public/datepicker/bootstrap/locales/bootstrap-datepicker.lt.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_assets/js/public/datepicker/bootstrap/locales/bootstrap-datepicker.lv.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_assets/js/public/datepicker/bootstrap/locales/bootstrap-datepicker.me.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_assets/js/public/datepicker/bootstrap/locales/bootstrap-datepicker.mk.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_assets/js/public/datepicker/bootstrap/locales/bootstrap-datepicker.mn.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_assets/js/public/datepicker/bootstrap/locales/bootstrap-datepicker.ms.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_assets/js/public/datepicker/bootstrap/locales/bootstrap-datepicker.nb.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_assets/js/public/datepicker/bootstrap/locales/bootstrap-datepicker.nl-BE.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_assets/js/public/datepicker/bootstrap/locales/bootstrap-datepicker.nl.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_assets/js/public/datepicker/bootstrap/locales/bootstrap-datepicker.no.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_assets/js/public/datepicker/bootstrap/locales/bootstrap-datepicker.pl.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_assets/js/public/datepicker/bootstrap/locales/bootstrap-datepicker.pt-BR.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_assets/js/public/datepicker/bootstrap/locales/bootstrap-datepicker.pt.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_assets/js/public/datepicker/bootstrap/locales/bootstrap-datepicker.ro.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_assets/js/public/datepicker/bootstrap/locales/bootstrap-datepicker.rs-latin.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_assets/js/public/datepicker/bootstrap/locales/bootstrap-datepicker.rs.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_assets/js/public/datepicker/bootstrap/locales/bootstrap-datepicker.ru.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_assets/js/public/datepicker/bootstrap/locales/bootstrap-datepicker.sk.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_assets/js/public/datepicker/bootstrap/locales/bootstrap-datepicker.sl.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_assets/js/public/datepicker/bootstrap/locales/bootstrap-datepicker.sq.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_assets/js/public/datepicker/bootstrap/locales/bootstrap-datepicker.sr-latin.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_assets/js/public/datepicker/bootstrap/locales/bootstrap-datepicker.sr.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_assets/js/public/datepicker/bootstrap/locales/bootstrap-datepicker.sv.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_assets/js/public/datepicker/bootstrap/locales/bootstrap-datepicker.sw.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_assets/js/public/datepicker/bootstrap/locales/bootstrap-datepicker.th.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_assets/js/public/datepicker/bootstrap/locales/bootstrap-datepicker.tr.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_assets/js/public/datepicker/bootstrap/locales/bootstrap-datepicker.uk.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_assets/js/public/datepicker/bootstrap/locales/bootstrap-datepicker.vi.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_assets/js/public/datepicker/bootstrap/locales/bootstrap-datepicker.zh-CN.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_assets/js/public/datepicker/bootstrap/locales/bootstrap-datepicker.zh-TW.min.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_assets/js/public/datepicker/pikaday/pikaday.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/_assets/js/public/datepicker/pikaday/pikaday.js" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_assets/js/public/select2-4.0.3/js/select2.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/_assets/js/public/select2-4.0.3/js/select2.min.js" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_assets/js/module/notykit/notykit.js" afterPath="$PROJECT_DIR$/_assets/js/module/notykit/notykit.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_assets/js/public/select2-4.0.3/js/select2.full.js" afterPath="$PROJECT_DIR$/_assets/js/public/select2-4.0.3/js/select2.full.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/_assets/js/public/select2-4.0.3/js/select2.full.min.js" afterPath="$PROJECT_DIR$/_assets/js/public/select2-4.0.3/js/select2.full.min.js" />
+    </list>
+    <list id="9a33ba27-52ca-4957-972f-ff8ebcf98d19" name="New changelist" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="github.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <file path="$PROJECT_DIR$/.idea/workspace.xml" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
   </component>
@@ -22,56 +117,154 @@
     <favorites_list name="github" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/index.html">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="dataload.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/_assets/js/module/dataload/dataload.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="540">
-              <caret line="15" column="41" selection-start-line="15" selection-start-column="32" selection-end-line="15" selection-end-column="41" />
+            <state relative-caret-position="5700">
+              <caret line="380" column="5" selection-start-line="380" selection-start-column="5" selection-end-line="380" selection-end-column="5" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="jquery-1.12.0.min.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/_assets/js/public/jquery/jquery-1.12.0.min.js">
+      <file leaf-file-name="jquery.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/_assets/js/public/DataTables/js/jquery.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="0">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="spinkit.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/_assets/js/module/spinkit/spinkit.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="20295">
+              <caret line="1353" column="4" selection-start-line="1353" selection-start-column="4" selection-end-line="1353" selection-end-column="4" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="page.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/_assets/js/module/page/page.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="285">
+              <caret line="19" column="36" selection-start-line="19" selection-start-column="36" selection-end-line="19" selection-end-column="36" />
               <folding>
-                <element signature="n#!!doc" expanded="true" />
+                <marker date="1467729421000" expanded="true" signature="917:929" ph="..." />
+                <marker date="1467729421000" expanded="true" signature="1208:1239" ph="..." />
+                <marker date="1467729421000" expanded="true" signature="3569:3581" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="plugins.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/_assets/js/plugins.js">
+      <file leaf-file-name="scrollcontrol.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/_assets/js/module/scrollcontrol/scrollcontrol.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="36">
-              <caret line="1" column="19" selection-start-line="1" selection-start-column="19" selection-end-line="1" selection-end-column="19" />
+            <state relative-caret-position="0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="common.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/_assets/js/module/common/common.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="5040">
+              <caret line="336" column="10" selection-start-line="336" selection-start-column="10" selection-end-line="336" selection-end-column="10" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ar.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/_assets/js/public/select2-4.0.3/js/i18n/ar.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="pikaday.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/_assets/js/public/datepicker/pikaday/pikaday.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="imginput.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/_assets/js/module/imginput/imginput.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding>
-                <element signature="n#!!doc" expanded="true" />
+                <marker date="1468481090000" expanded="true" signature="5817:5852" ph="..." />
+                <marker date="1468481090000" expanded="true" signature="5926:5961" ph="..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="notykit.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/_assets/js/module/notykit/notykit.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="179">
+              <caret line="762" column="17" selection-start-line="762" selection-start-column="17" selection-end-line="762" selection-end-column="17" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CSS File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="JsBuildToolGruntFileManager" detection-done="true" />
-  <component name="JsBuildToolPackageJson" detection-done="true" />
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/_assets/js/module/notykit/css/default.css" />
+        <option value="$PROJECT_DIR$/_assets/css/main.css" />
+        <option value="$PROJECT_DIR$/../etstation/_assets/js/module/dataload/dataload.js" />
+        <option value="$PROJECT_DIR$/../etstation/_assets/js/module/common/common.js" />
+        <option value="$PROJECT_DIR$/_assets/js/public/swiper/swiper-3.3.1.jquery.min.js" />
+        <option value="$PROJECT_DIR$/_assets/js/plugins.js" />
+        <option value="$PROJECT_DIR$/_assets/js/module/tabskit/tabskit.js" />
+        <option value="$PROJECT_DIR$/_assets/js/module/common/common.js" />
+        <option value="$PROJECT_DIR$/_assets/js/module/dataload/dataload.js" />
+        <option value="$PROJECT_DIR$/_assets/js/module/notykit/notykit.js" />
+        <option value="$PROJECT_DIR$/_assets/js/module/spinkit/spinkit.js" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
   <component name="JsGulpfileManager">
     <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-13" />
-    <option name="y" value="-13" />
-    <option name="width" value="2762" />
-    <option name="height" value="1770" />
+    <option name="y" value="23" />
+    <option name="width" value="1440" />
+    <option name="height" value="821" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -104,31 +297,33 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="github" />
+              <option name="myItemId" value="WebFrame" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="github" />
+              <option name="myItemId" value="WebFrame" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="github" />
+              <option name="myItemId" value="WebFrame" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="github" />
+              <option name="myItemId" value="WebFrame" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="github" />
+              <option name="myItemId" value="WebFrame" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -142,33 +337,11 @@
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="github" />
+              <option name="myItemId" value="WebFrame" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="github" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="_assets" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="github" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="github" />
+              <option name="myItemId" value="WebFrame" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -183,18 +356,62 @@
               <option name="myItemId" value="public" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+          </PATH>
+          <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="jquery" />
+              <option name="myItemId" value="WebFrame" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WebFrame" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="_assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="module" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="github" />
+              <option name="myItemId" value="WebFrame" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="github" />
+              <option name="myItemId" value="WebFrame" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="_assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="module" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="notykit" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WebFrame" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WebFrame" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -204,86 +421,654 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
+    <property name="js-jscs-nodeInterpreter" value="/usr/local/bin/node" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="settings.editor.selected.configurable" value="web-ide.project.structure" />
+    <property name="settings.editor.splitter.proportion" value="0.2" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/_assets/js/module/notykit" />
+      <recent name="$PROJECT_DIR$/_assets/js/module" />
+      <recent name="$PROJECT_DIR$/_assets/js/public" />
+      <recent name="$PROJECT_DIR$/_assets/js/module/common" />
+      <recent name="$PROJECT_DIR$/_assets/js/module/dataload" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
+      <method />
+    </configuration>
+    <configuration default="true" type="DartTestRunConfigurationType" factoryName="Dart Test">
+      <method />
+    </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma">
+      <config-file value="" />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="NodeJSConfigurationType" factoryName="Node.js" path-to-node="project" working-dir="">
+      <method />
+    </configuration>
+    <configuration default="true" type="cucumber.js" factoryName="Cucumber.js">
+      <option name="cucumberJsArguments" value="" />
+      <option name="executablePath" />
+      <option name="filePath" />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.npm" factoryName="npm">
+      <command value="run-script" />
+      <scripts />
+      <node-interpreter value="project" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="mocha-javascript-test-runner" factoryName="Mocha">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <working-directory />
+      <pass-parent-env>true</pass-parent-env>
+      <envs />
+      <ui>bdd</ui>
+      <extra-mocha-options />
+      <test-kind>DIRECTORY</test-kind>
+      <test-directory />
+      <recursive>false</recursive>
+      <method />
+    </configuration>
   </component>
   <component name="ShelveChangesManager" show_recycled="false">
     <option name="remove_strategy" value="false" />
   </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="41a8b54c-0f03-4103-b538-36bbb69b1a54" name="Default" comment="" />
+      <changelist id="9a33ba27-52ca-4957-972f-ff8ebcf98d19" name="New changelist" comment="" />
       <created>1461856127027</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1461856127027</updated>
       <workItem from="1461856128680" duration="698000" />
+      <workItem from="1462933480515" duration="18950000" />
+      <workItem from="1463018596375" duration="19675000" />
+      <workItem from="1463066115201" duration="35000" />
+      <workItem from="1463105784667" duration="17693000" />
+      <workItem from="1463188092219" duration="42074000" />
+      <workItem from="1463395245536" duration="120000" />
+      <workItem from="1463469986452" duration="59000" />
+      <workItem from="1464019097838" duration="150000" />
+      <workItem from="1464339895714" duration="88000" />
+      <workItem from="1464340619437" duration="107000" />
+      <workItem from="1464341909248" duration="381000" />
+      <workItem from="1464530321303" duration="103000" />
+      <workItem from="1464567243939" duration="29361000" />
+      <workItem from="1464659805471" duration="32000" />
+      <workItem from="1464659859443" duration="16554000" />
+      <workItem from="1464692602321" duration="10707000" />
+      <workItem from="1464711021609" duration="128000" />
+      <workItem from="1464711174698" duration="13000" />
+      <workItem from="1464711345177" duration="141000" />
+      <workItem from="1464747483292" duration="94000" />
+      <workItem from="1464928447199" duration="217000" />
+      <workItem from="1466003079203" duration="186000" />
+      <workItem from="1466311423976" duration="162000" />
+      <workItem from="1466312792711" duration="21000" />
+      <workItem from="1466523985270" duration="61000" />
+      <workItem from="1466581043734" duration="42000" />
+      <workItem from="1466591737746" duration="28000" />
+      <workItem from="1466654657394" duration="471000" />
+      <workItem from="1467299333260" duration="32000" />
+      <workItem from="1467305595604" duration="738000" />
+      <workItem from="1467473757965" duration="114000" />
+      <workItem from="1467737894364" duration="134000" />
+      <workItem from="1467863607368" duration="62000" />
+      <workItem from="1468061679500" duration="237000" />
+      <workItem from="1468590731182" duration="141000" />
+      <workItem from="1468644162400" duration="25000" />
     </task>
+    <task id="LOCAL-00001" summary="init">
+      <created>1462934247792</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1462934247793</updated>
+    </task>
+    <task id="LOCAL-00002" summary="init">
+      <created>1462956965940</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1462956965940</updated>
+    </task>
+    <task id="LOCAL-00003" summary="init">
+      <created>1462965109521</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1462965109521</updated>
+    </task>
+    <task id="LOCAL-00004" summary="init">
+      <created>1463066129875</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1463066129875</updated>
+    </task>
+    <task id="LOCAL-00005" summary="init">
+      <created>1463135728186</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1463135728186</updated>
+    </task>
+    <task id="LOCAL-00006" summary="init">
+      <created>1463365914207</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1463365914207</updated>
+    </task>
+    <task id="LOCAL-00007" summary="init">
+      <created>1463395296979</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1463395296979</updated>
+    </task>
+    <task id="LOCAL-00008" summary="init">
+      <created>1463470034072</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1463470034072</updated>
+    </task>
+    <task id="LOCAL-00009" summary="init">
+      <created>1464019110459</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1464019110459</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="698000" />
+    <option name="totallyTimeSpent" value="159834000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-13" y="-13" width="2762" height="1770" extended-state="6" />
+    <frame x="0" y="23" width="1440" height="821" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24947146" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32647464" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
+  <component name="Vcs.Log.UiProperties">
+    <option name="RECENTLY_FILTERED_USER_GROUPS">
+      <collection />
+    </option>
+    <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+      <collection />
+    </option>
+  </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="init" />
+    <option name="LAST_COMMIT_MESSAGE" value="init" />
+    <option name="PRESELECT_EXISTING_CHANGELIST" value="false" />
+  </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager />
+    <breakpoint-manager>
+      <option name="time" value="9" />
+    </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/_assets/js/public/jquery/jquery-1.12.0.min.js">
+    <entry file="file://$PROJECT_DIR$/_assets/js/module/common/common.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5055">
+          <caret line="337" column="11" selection-start-line="337" selection-start-column="11" selection-end-line="337" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_assets/js/module/dataload/dataload.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5700">
+          <caret line="380" column="5" selection-start-line="380" selection-start-column="5" selection-end-line="380" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_assets/js/public/DataTables/js/jquery.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_assets/js/module/notykit/notykit.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="11625">
+          <caret line="775" column="4" selection-start-line="775" selection-start-column="4" selection-end-line="775" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_assets/js/module/spinkit/spinkit.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="20295">
+          <caret line="1353" column="4" selection-start-line="1353" selection-start-column="4" selection-end-line="1353" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_assets/js/module/page/page.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="36" selection-start-line="19" selection-start-column="36" selection-end-line="19" selection-end-column="36" />
           <folding>
-            <element signature="n#!!doc" expanded="true" />
+            <marker date="1467729421000" expanded="true" signature="917:929" ph="..." />
+            <marker date="1467729421000" expanded="true" signature="1208:1239" ph="..." />
+            <marker date="1467729421000" expanded="true" signature="3569:3581" ph="..." />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_assets/js/module/scrollcontrol/scrollcontrol.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="24" column="20" selection-start-line="24" selection-start-column="20" selection-end-line="24" selection-end-column="20" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/_assets/js/plugins.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="1" column="19" selection-start-line="1" selection-start-column="19" selection-end-line="1" selection-end-column="19" />
+        <state relative-caret-position="885">
+          <caret line="60" column="76" selection-start-line="60" selection-start-column="76" selection-end-line="60" selection-end-column="76" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_assets/js/module/common/common.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5055">
+          <caret line="337" column="11" selection-start-line="337" selection-start-column="11" selection-end-line="337" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_assets/js/module/dataload/dataload.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5700">
+          <caret line="380" column="5" selection-start-line="380" selection-start-column="5" selection-end-line="380" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_assets/js/public/DataTables/js/jquery.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_assets/js/module/notykit/notykit.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="11625">
+          <caret line="775" column="4" selection-start-line="775" selection-start-column="4" selection-end-line="775" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_assets/js/module/spinkit/spinkit.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="20295">
+          <caret line="1353" column="4" selection-start-line="1353" selection-start-column="4" selection-end-line="1353" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_assets/js/module/page/page.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="n#!!doc" expanded="true" />
+            <marker date="1467729421000" expanded="true" signature="917:929" ph="..." />
+            <marker date="1467729421000" expanded="true" signature="1208:1239" ph="..." />
+            <marker date="1467729421000" expanded="true" signature="3569:3581" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="15" column="41" selection-start-line="15" selection-start-column="32" selection-end-line="15" selection-end-column="41" />
+        <state relative-caret-position="360">
+          <caret line="24" column="20" selection-start-line="24" selection-start-column="20" selection-end-line="24" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_assets/js/plugins.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="885">
+          <caret line="60" column="76" selection-start-line="60" selection-start-column="76" selection-end-line="60" selection-end-column="76" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_assets/js/module/common/common.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5055">
+          <caret line="337" column="11" selection-start-line="337" selection-start-column="11" selection-end-line="337" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_assets/js/module/dataload/dataload.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5700">
+          <caret line="380" column="5" selection-start-line="380" selection-start-column="5" selection-end-line="380" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_assets/js/public/DataTables/js/jquery.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_assets/js/module/notykit/notykit.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4275">
+          <caret line="285" column="33" selection-start-line="285" selection-start-column="33" selection-end-line="285" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_assets/js/module/spinkit/spinkit.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5130">
+          <caret line="342" column="44" selection-start-line="342" selection-start-column="44" selection-end-line="342" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="24" column="20" selection-start-line="24" selection-start-column="20" selection-end-line="24" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_assets/js/plugins.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="885">
+          <caret line="60" column="76" selection-start-line="60" selection-start-column="76" selection-end-line="60" selection-end-column="76" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_assets/js/module/common/common.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5055">
+          <caret line="337" column="11" selection-start-line="337" selection-start-column="11" selection-end-line="337" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_assets/js/module/dataload/dataload.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_assets/js/module/notykit/notykit.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4275">
+          <caret line="285" column="33" selection-start-line="285" selection-start-column="33" selection-end-line="285" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_assets/js/module/spinkit/spinkit.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5130">
+          <caret line="342" column="44" selection-start-line="342" selection-start-column="44" selection-end-line="342" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="24" column="20" selection-start-line="24" selection-start-column="20" selection-end-line="24" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_assets/js/plugins.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="885">
+          <caret line="60" column="76" selection-start-line="60" selection-start-column="76" selection-end-line="60" selection-end-column="76" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_assets/js/module/common/common.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="7350">
+          <caret line="490" column="9" selection-start-line="490" selection-start-column="9" selection-end-line="490" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_assets/js/module/dataload/dataload.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2385">
+          <caret line="159" column="15" selection-start-line="159" selection-start-column="15" selection-end-line="159" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_assets/js/module/notykit/notykit.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4275">
+          <caret line="285" column="33" selection-start-line="285" selection-start-column="33" selection-end-line="285" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_assets/js/module/spinkit/spinkit.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="24" column="20" selection-start-line="24" selection-start-column="20" selection-end-line="24" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_assets/js/plugins.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="885">
+          <caret line="60" column="76" selection-start-line="60" selection-start-column="76" selection-end-line="60" selection-end-column="76" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_assets/js/module/common/common.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="7350">
+          <caret line="490" column="9" selection-start-line="490" selection-start-column="9" selection-end-line="490" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_assets/js/module/dataload/dataload.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2385">
+          <caret line="159" column="15" selection-start-line="159" selection-start-column="15" selection-end-line="159" selection-end-column="15" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_assets/js/module/notykit/notykit.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="24" column="20" selection-start-line="24" selection-start-column="20" selection-end-line="24" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_assets/js/plugins.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="885">
+          <caret line="60" column="76" selection-start-line="60" selection-start-column="76" selection-end-line="60" selection-end-column="76" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_assets/js/module/dataload/dataload.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5700">
+          <caret line="380" column="5" selection-start-line="380" selection-start-column="5" selection-end-line="380" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_assets/js/public/DataTables/js/jquery.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_assets/js/module/spinkit/spinkit.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="20295">
+          <caret line="1353" column="4" selection-start-line="1353" selection-start-column="4" selection-end-line="1353" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_assets/js/module/page/page.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="36" selection-start-line="19" selection-start-column="36" selection-end-line="19" selection-end-column="36" />
+          <folding>
+            <marker date="1467729421000" expanded="true" signature="917:929" ph="..." />
+            <marker date="1467729421000" expanded="true" signature="1208:1239" ph="..." />
+            <marker date="1467729421000" expanded="true" signature="3569:3581" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_assets/js/module/scrollcontrol/scrollcontrol.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_assets/js/module/common/common.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5040">
+          <caret line="336" column="10" selection-start-line="336" selection-start-column="10" selection-end-line="336" selection-end-column="10" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_assets/js/public/select2-4.0.3/js/i18n/ar.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_assets/js/public/datepicker/pikaday/pikaday.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_assets/js/module/imginput/imginput.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <marker date="1468481090000" expanded="true" signature="5817:5852" ph="..." />
+            <marker date="1468481090000" expanded="true" signature="5926:5961" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_assets/js/module/notykit/notykit.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="179">
+          <caret line="762" column="17" selection-start-line="762" selection-start-column="17" selection-end-line="762" selection-end-column="17" />
           <folding />
         </state>
       </provider>
